@@ -1,58 +1,53 @@
 package org.iogame.main;
 
+import org.iogame.model.GameObject;
 import org.iogame.model.fleet.Fleet;
-import org.iogame.model.fleet.Movement;
+import org.iogame.model.fleet.FleetFactory;
 import org.iogame.model.planet.Planet;
+import org.iogame.model.planet.PlanetFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Game {
 
-    private List<Planet> planets = new ArrayList<>();
-    private List<Fleet> fleets = new ArrayList<>();
+    private final Map<Class<? extends GameObject>, List<GameObject>> gameObjects;
+    private final FleetFactory fleetFactory;
+    private final PlanetFactory planetFactory;
 
     public Game() {
-
-        Planet p = new Planet(4.0, 7.0);
-        Planet p2 = new Planet(2.0, 6.0);
-        planets.add(p);
-        planets.add(p2);
-
-        Fleet f = new Fleet(1, p);
-        fleets.add(f);
-        moveTo(f, p2);
-        for (int i = 0; i < 100; i++) {
-            loop(0.1);
-        }
-
+        this.gameObjects = new HashMap<>();
+        this.fleetFactory = new FleetFactory(this);
+        this.planetFactory = new PlanetFactory(this);
     }
 
-    public void loop(double delta) {
-        for (int i = 0; i < fleets.size(); i++) {
-            fleets.get(i).move(delta);
+    public void run(double delta) {
+        for (List<? extends GameObject> value : gameObjects.values()) {
+            for (GameObject gameObject : value) {
+                gameObject.update(delta);
+            }
         }
     }
 
-    private void moveTo(Fleet fleet, Planet planet) {
-        Movement movement = new Movement(fleet.getLocation(), planet);
-        fleet.setMovement(movement);
+    public <T extends GameObject> void addGameObject(T gameObject) {
+        List<GameObject> gameObjectList = this.gameObjects.computeIfAbsent(gameObject.getClass(), ignore -> new ArrayList<>());
+        gameObjectList.add(gameObject);
     }
 
     public List<Planet> getPlanets() {
-        return planets;
-    }
-
-    public void setPlanets(List<Planet> planets) {
-        this.planets = planets;
+        return getUnchecked(Planet.class);
     }
 
     public List<Fleet> getFleets() {
-        return fleets;
+        return getUnchecked(Fleet.class);
     }
 
-    public void setFleets(List<Fleet> fleets) {
-        this.fleets = fleets;
+    private <T extends GameObject> List<T> getUnchecked(Class<T> clazz) {
+        List<T> castObjects = new ArrayList<>();
+        List<GameObject> gameObjects = this.gameObjects.get(clazz.getClass());
+        gameObjects.forEach(gameObject -> castObjects.add((T) gameObject));
+        return castObjects;
     }
-
 }

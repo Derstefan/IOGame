@@ -1,8 +1,9 @@
 package org.iogame.model.fleet;
 
+import org.iogame.model.GameObject;
 import org.iogame.model.planet.Planet;
 
-public class Fleet {
+public class Fleet extends GameObject {
 
     private double x;
     private double y;
@@ -15,8 +16,8 @@ public class Fleet {
 
     private Planet location = null;
 
-
-    public Fleet(double speed, Planet location) {
+    Fleet(String name, double speed, Planet location) {
+        super(name);
         this.x = location.getX();
         this.y = location.getY();
         this.speed = speed;
@@ -110,6 +111,10 @@ public class Fleet {
         location = null;
     }
 
+    @Override
+    public void update(double delta) {
+
+    }
 
     private double getTravelDistance() {
 
