@@ -1,6 +1,7 @@
 package org.iogame.model.planet;
 
 import org.iogame.model.GameObject;
+import org.jetbrains.annotations.TestOnly;
 
 public class Planet extends GameObject {
     private double x;
@@ -8,6 +9,11 @@ public class Planet extends GameObject {
     private Resource resource;
     private Storage storage;
     private BuildingManager buildingManager;
+
+    @TestOnly
+    public Planet() {
+        this("", 0.0D, 0.0D);
+    }
 
     Planet(String name, double x, double y) {
         super(name);

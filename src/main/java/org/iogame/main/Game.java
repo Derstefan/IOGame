@@ -44,9 +44,17 @@ public class Game {
         return getUnchecked(Fleet.class);
     }
 
+    public PlanetFactory getPlanetFactory() {
+        return planetFactory;
+    }
+
+    public FleetFactory getFleetFactory() {
+        return fleetFactory;
+    }
+
     private <T extends GameObject> List<T> getUnchecked(Class<T> clazz) {
         List<T> castObjects = new ArrayList<>();
-        List<GameObject> gameObjects = this.gameObjects.get(clazz.getClass());
+        List<GameObject> gameObjects = this.gameObjects.get(clazz);
         gameObjects.forEach(gameObject -> castObjects.add((T) gameObject));
         return castObjects;
     }
