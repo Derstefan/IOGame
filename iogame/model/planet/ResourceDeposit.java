@@ -3,11 +3,11 @@ import iogame.model.enums.EResource;
 
 import java.util.HashMap;
 
-public class Resource {
+public class ResourceDeposit {
     private HashMap<EResource, Double> deposit = new HashMap<EResource, Double>();
-    private HashMap<EResource, Double> miningRate = new HashMap<EResource, Double>();
+    private HashMap<EResource, Double> accessability = new HashMap<EResource, Double>();
 
-    public Resource() {
+    public ResourceDeposit() {
         // TODO: generate random occurence for each ressource
     }
 
@@ -23,7 +23,8 @@ public class Resource {
         return deposit;
     }
 
-    public HashMap<EResource, Double> getMiningRate() {
-        return miningRate;
+
+    public double getAccessability(EResource r) {
+        return accessability.get(r);
     }
 }

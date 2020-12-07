@@ -6,10 +6,14 @@ import java.util.HashMap;
 
 public class Storage {
     private HashMap<EResource, Double> stock = new HashMap<EResource, Double>();
+    private HashMap<EResource, Double> cap = new HashMap<EResource, Double>();
 
     public Storage() {
         for (EResource r : EResource.values()) {
             stock.put(r, 0.0);
+        }
+        for (EResource r : EResource.values()) {
+            cap.put(r, 100.0);//TODO: Lookup vars
         }
     }
 
@@ -17,8 +21,28 @@ public class Storage {
         return stock.get(type);
     }
 
+    public HashMap<EResource, Double> getStock() {
+        return stock;
+    }
+
+    public HashMap<EResource, Double> getCap() {
+        return cap;
+    }
+
+    public void setCap(EResource type, double newCap) {
+        this.cap.put(type,newCap);
+    }
+
     public void addResource(EResource type, double amount) {
-        stock.put(type, stock.get(type) + amount);
+        if (amount >=cap.get(type) - stock.get(type)) {
+            stock.put(type, cap.get(type));
+        }
+    }
+
+    public void addResources(HashMap<EResource, Double> amount) {
+        for (EResource r : EResource.values()) {
+            addResource(r, amount.get(r));
+        }
     }
 
     public boolean removeResource(EResource type, double amount) {

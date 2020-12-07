@@ -7,6 +7,11 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+IOGame.iml
 
 # Generated files
 .idea/**/contentModel.xml

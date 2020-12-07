@@ -7,7 +7,9 @@ import iogame.model.planet.Planet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class Game extends Thread {
+
+	private long lastTime;
 
 	private List<Planet> planets = new ArrayList<>();
 	private List<Fleet> fleets = new ArrayList<>();
@@ -25,34 +27,35 @@ public class Game {
 		for(int i=0;i<100;i++) {
 		loop(0.1);
 		}
-		
+		lastTime= System.currentTimeMillis();
 	}
-
+	/*
+	Threadfunction
+	 */
+	public void run() {
+		long now = System.currentTimeMillis();
+		double delta = (now - lastTime)/1000;
+		lastTime=now;
+		loop(delta);
+	}
+	/*
+	Mainloop with delta as timediff in s to last call
+	 */
 	public void loop(double delta) {
-		for(int i=0;i<fleets.size();i++) {
-			fleets.get(i).move(delta);
+		//Fleets
+		for (Fleet f:fleets) {
+			f.move(delta);
+		}
+
+		//Planets
+		for(Planet p:planets){
+			p.loop(delta);
 		}
 	}
 
 	private void moveTo(Fleet fleet, Planet planet) {
 		Movement movement = new Movement(fleet.getLocation(),planet);
 		fleet.setMovement(movement);
-	}
-
-	public List<Planet> getPlanets() {
-		return planets;
-	}
-
-	public void setPlanets(List<Planet> planets) {
-		this.planets = planets;
-	}
-
-	public List<Fleet> getFleets() {
-		return fleets;
-	}
-
-	public void setFleets(List<Fleet> fleets) {
-		this.fleets = fleets;
 	}
 
 }
