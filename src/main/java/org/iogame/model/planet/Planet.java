@@ -1,13 +1,22 @@
 package org.iogame.model.planet;
 
-public class Planet {
+import org.iogame.model.GameObject;
+import org.jetbrains.annotations.TestOnly;
+
+public class Planet extends GameObject {
     private double x;
     private double y;
     private Resource resource;
     private Storage storage;
     private BuildingManager buildingManager;
 
-    public Planet(double x, double y) {
+    @TestOnly
+    public Planet() {
+        this("", 0.0D, 0.0D);
+    }
+
+    Planet(String name, double x, double y) {
+        super(name);
         this.x = x;
         this.y = y;
         this.resource = new Resource();
@@ -49,5 +58,10 @@ public class Planet {
 
     public void setStorage(Storage storage) {
         this.storage = storage;
+    }
+
+    @Override
+    public void update(double delta) {
+
     }
 }
