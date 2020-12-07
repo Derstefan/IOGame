@@ -113,7 +113,7 @@ public class Fleet extends GameObject {
 
     @Override
     public void update(double delta) {
-
+        move(delta);
     }
 
     private double getTravelDistance() {

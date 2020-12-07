@@ -31,7 +31,7 @@ public class Game {
         }
     }
 
-    public <T extends GameObject> void addGameObject(T gameObject) {
+    public void addGameObject(GameObject gameObject) {
         List<GameObject> gameObjectList = this.gameObjects.computeIfAbsent(gameObject.getClass(), ignore -> new ArrayList<>());
         gameObjectList.add(gameObject);
     }
