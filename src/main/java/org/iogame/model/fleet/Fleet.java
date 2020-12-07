@@ -1,6 +1,6 @@
-package iogame.model.fleet;
+package org.iogame.model.fleet;
 
-import iogame.model.planet.Planet;
+import org.iogame.model.planet.Planet;
 
 public class Fleet {
 

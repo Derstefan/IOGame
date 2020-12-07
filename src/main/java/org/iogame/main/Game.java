@@ -1,8 +1,8 @@
-package iogame.main;
+package org.iogame.main;
 
-import iogame.model.fleet.Fleet;
-import iogame.model.fleet.Movement;
-import iogame.model.planet.Planet;
+import org.iogame.model.fleet.Fleet;
+import org.iogame.model.fleet.Movement;
+import org.iogame.model.planet.Planet;
 
 import java.util.ArrayList;
 import java.util.List;

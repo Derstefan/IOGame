@@ -1,6 +1,4 @@
-package iogame.main;
-
-import iogame.main.Game;
+package org.iogame.main;
 
 public class Main {
 
