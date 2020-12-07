@@ -12,8 +12,8 @@ public class Resource {
         // TODO: generate random occurence for each ressource
     }
 
-    public boolean mineResource(EResource type, double amount){
-        if(amount <= deposit.get(type)){
+    public boolean mineResource(EResource type, double amount) {
+        if (amount <= deposit.get(type)) {
             deposit.put(type, deposit.get(type) - amount);
             return true;
         }
