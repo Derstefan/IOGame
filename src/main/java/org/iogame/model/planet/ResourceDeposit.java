@@ -1,5 +1,7 @@
-package iogame.model.planet;
-import iogame.model.enums.EResource;
+package org.iogame.model.planet;
+
+
+import org.iogame.model.enums.EResource;
 
 import java.util.HashMap;
 

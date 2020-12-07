@@ -1,61 +1,61 @@
 package org.iogame.main;
 
-import org.iogame.model.GameObject;
 import org.iogame.model.fleet.Fleet;
-import org.iogame.model.fleet.FleetFactory;
+import org.iogame.model.fleet.Movement;
 import org.iogame.model.planet.Planet;
-import org.iogame.model.planet.PlanetFactory;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class Game {
+public class Game extends Thread {
 
-    private final Map<Class<? extends GameObject>, List<GameObject>> gameObjects;
-    private final FleetFactory fleetFactory;
-    private final PlanetFactory planetFactory;
+	private long lastTime;
 
-    public Game() {
-        this.gameObjects = new HashMap<>();
-        this.fleetFactory = new FleetFactory(this);
-        this.planetFactory = new PlanetFactory(this);
-    }
+	private List<Planet> planets = new ArrayList<>();
+	private List<Fleet> fleets = new ArrayList<>();
 
-    public void run(double delta) {
-        for (List<? extends GameObject> value : gameObjects.values()) {
-            for (GameObject gameObject : value) {
-                gameObject.update(delta);
-            }
-        }
-    }
+	public Game() {
 
-    public void addGameObject(GameObject gameObject) {
-        List<GameObject> gameObjectList = this.gameObjects.computeIfAbsent(gameObject.getClass(), ignore -> new ArrayList<>());
-        gameObjectList.add(gameObject);
-    }
+		Planet p = new Planet(4.0,7.0);
+		Planet p2 = new Planet(2.0,6.0);
+		planets.add(p);
+		planets.add(p2);
+		
+		Fleet f = new Fleet(1,p);
+		fleets.add(f);
+		moveTo(f,p2);
+		for(int i=0;i<100;i++) {
+		loop(0.1);
+		}
+		lastTime= System.currentTimeMillis();
+	}
+	/*
+	Threadfunction
+	 */
+	public void run() {
+		long now = System.currentTimeMillis();
+		double delta = (now - lastTime)/1000;
+		lastTime=now;
+		loop(delta);
+	}
+	/*
+	Mainloop with delta as timediff in s to last call
+	 */
+	public void loop(double delta) {
+		//Fleets
+		for (Fleet f:fleets) {
+			f.move(delta);
+		}
 
-    public List<Planet> getPlanets() {
-        return getUnchecked(Planet.class);
-    }
+		//Planets
+		for(Planet p:planets){
+			p.loop(delta);
+		}
+	}
 
-    public List<Fleet> getFleets() {
-        return getUnchecked(Fleet.class);
-    }
+	private void moveTo(Fleet fleet, Planet planet) {
+		Movement movement = new Movement(fleet.getLocation(),planet);
+		fleet.setMovement(movement);
+	}
 
-    public PlanetFactory getPlanetFactory() {
-        return planetFactory;
-    }
-
-    public FleetFactory getFleetFactory() {
-        return fleetFactory;
-    }
-
-    private <T extends GameObject> List<T> getUnchecked(Class<T> clazz) {
-        List<T> castObjects = new ArrayList<>();
-        List<GameObject> gameObjects = this.gameObjects.get(clazz);
-        gameObjects.forEach(gameObject -> castObjects.add((T) gameObject));
-        return castObjects;
-    }
 }

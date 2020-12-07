@@ -1,8 +1,8 @@
-package iogame.model.planet.buildings;
+package org.iogame.model.planet.buildings;
 
-import iogame.model.enums.EBuilding;
-import iogame.model.enums.EResource;
-import iogame.model.planet.Planet;
+import org.iogame.model.enums.EBuilding;
+import org.iogame.model.enums.EResource;
+import org.iogame.model.planet.Planet;
 
 public class LithiumMine extends Building{
     public LithiumMine() {
