@@ -1,5 +1,6 @@
-package iogame.model.planet;
-import iogame.model.enums.EResource;
+package org.iogame.model.planet;
+
+import org.iogame.model.enums.EResource;
 
 import java.util.HashMap;
 
@@ -11,8 +12,8 @@ public class Resource {
         // TODO: generate random occurence for each ressource
     }
 
-    public boolean mineResource(EResource type, double amount){
-        if(amount <= deposit.get(type)){
+    public boolean mineResource(EResource type, double amount) {
+        if (amount <= deposit.get(type)) {
             deposit.put(type, deposit.get(type) - amount);
             return true;
         }
