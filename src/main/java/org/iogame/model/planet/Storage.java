@@ -5,8 +5,8 @@ import org.iogame.model.enums.EResource;
 import java.util.HashMap;
 
 public class Storage {
-    private HashMap<EResource, Double> stock = new HashMap<EResource, Double>();
-    private HashMap<EResource, Double> cap = new HashMap<EResource, Double>();
+    private HashMap<EResource, Double> stock = new HashMap<>();
+    private HashMap<EResource, Double> cap = new HashMap<>();
 
     public Storage() {
         for (EResource r : EResource.values()) {

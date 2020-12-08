@@ -1,7 +1,6 @@
 package org.iogame.model.planet;
 
 import org.iogame.model.enums.EBuilding;
-import org.iogame.model.enums.EResource;
 import org.iogame.model.planet.buildings.Building;
 
 import java.util.HashMap;
@@ -40,10 +39,9 @@ public class BuildingManager {
         }
     }
 
-/*
-Put new building on the buildingQueue
- */
-
+    /**
+     * Put new building on the buildingQueue
+     */
     public boolean startBuild(EBuilding type){
         if(storage.removeResources(Building.getCosts(type))) {
             if(buildingQueue.isEmpty()){

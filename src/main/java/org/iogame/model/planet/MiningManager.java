@@ -15,7 +15,6 @@ public class MiningManager {
     // sustainability
     private HashMap<EResource, Double> efficiency = new HashMap<EResource, Double>();
 
-
     public MiningManager(ResourceDeposit resourceDeposit, Storage storage) {
         this.resourceDeposit = resourceDeposit;
         this.storage = storage;
@@ -25,7 +24,6 @@ public class MiningManager {
             efficiency.put(r, 1.0);
         }
     }
-
 
     public void loop(double delta) {
 
@@ -37,7 +35,6 @@ public class MiningManager {
         }
 
     }
-
 
     public HashMap<EResource, Double> getMiningRate() {
         return miningRate;

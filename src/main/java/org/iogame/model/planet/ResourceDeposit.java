@@ -25,7 +25,6 @@ public class ResourceDeposit {
         return deposit;
     }
 
-
     public double getAccessability(EResource r) {
         return accessability.get(r);
     }

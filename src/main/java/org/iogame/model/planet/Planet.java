@@ -32,9 +32,6 @@ public class Planet {
         return buildingManager.destroy(BuildingType);
     }
 
-
-
-
     public double getX() {
         return x;
     }
