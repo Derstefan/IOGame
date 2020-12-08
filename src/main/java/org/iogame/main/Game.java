@@ -15,12 +15,11 @@ public class Game extends Thread {
 	private List<Fleet> fleets = new ArrayList<>();
 
 	public Game() {
-
 		Planet p = new Planet(4.0,7.0);
 		Planet p2 = new Planet(2.0,6.0);
 		planets.add(p);
 		planets.add(p2);
-		
+
 		Fleet f = new Fleet(1,p);
 		fleets.add(f);
 		moveTo(f,p2);
@@ -29,6 +28,7 @@ public class Game extends Thread {
 		}
 		lastTime= System.currentTimeMillis();
 	}
+
 	/*
 	Threadfunction
 	 */
@@ -38,6 +38,7 @@ public class Game extends Thread {
 		lastTime=now;
 		loop(delta);
 	}
+
 	/*
 	Mainloop with delta as timediff in s to last call
 	 */

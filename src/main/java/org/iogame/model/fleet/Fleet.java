@@ -13,9 +13,7 @@ public class Fleet {
 	
 	private Movement movement = null;
 	
-	private Planet location= null;
-	
-
+	private Planet location;
 
 	public Fleet(double speed,Planet location) {
 		this.x = location.getX();
@@ -110,11 +108,8 @@ public class Fleet {
 		System.out.println("dx=" + dx + " , dy = " +dy);
 		location = null;
 	}
-	
-	
-	private double getTravelDistance() {
-		
 
+	private double getTravelDistance() {
 		double x2 =movement.getTarget().getX();
 		double y2 =movement.getTarget().getY();
 		

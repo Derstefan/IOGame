@@ -9,8 +9,8 @@ class FleetTest {
 
     @Test
     void shouldCreateFleet() {
-        Planet location = new Planet();
-        Fleet fleet = new Fleet("f", 0.5D, location);
+        Planet location = new Planet(0.0D, 0.0D);
+        Fleet fleet = new Fleet(0.5D, location);
         assertNotNull(fleet);
         assertEquals(0.5D, fleet.getSpeed());
         assertEquals(location, fleet.getLocation());
