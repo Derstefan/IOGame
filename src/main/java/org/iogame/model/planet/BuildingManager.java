@@ -4,25 +4,27 @@ import org.iogame.model.enums.EBuilding;
 import org.iogame.model.planet.buildings.Building;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /*
 The BuildingManager organizes all the Buildings and the BuildingQueue on the planet
  */
 public class BuildingManager {
-    private HashMap<EBuilding, Building> buildings;
-    private Storage storage;
-    private Planet planet;
+    private final Map<EBuilding, Building> buildings;
+    private final List<EBuilding> buildingQueue;
+    private final Storage storage;
+    private final Planet planet;
 
-    private List<EBuilding> buildingQueue;
+
     private double remainingTime;
 
-    public BuildingManager(Storage storage,Planet planet) {
+    public BuildingManager(Storage storage, Planet planet) {
+        this.buildings = new HashMap<>();
+        this.buildingQueue = new LinkedList<>();
         this.storage = storage;
         this.planet = planet;
-        for (EBuilding e: EBuilding.values()) {
-            buildings.put(e,null);
-        }
     }
 
     public void loop(double delta){
@@ -57,7 +59,7 @@ public class BuildingManager {
 
     private void build(EBuilding type){
         Building b = Building.getInstance(type);
-        if(buildings.get(type)==null){
+        if (!buildings.containsKey(type)){
             buildings.put(type,b);
         } else {
             b= buildings.get(type);
@@ -78,7 +80,7 @@ public class BuildingManager {
     }
 
     public boolean destroy(EBuilding type){
-        if(buildings.get(type)!=null){
+        if (buildings.containsKey(type)){
             Building b = buildings.get(type);
             b.lvlDown();
             b.destroyBuilding(planet);
