@@ -1,4 +1,4 @@
-package iogame.model.planet;
+package model.planet;
 
 public class Planet {
     private double x;

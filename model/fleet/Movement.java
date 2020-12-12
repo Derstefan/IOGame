@@ -1,6 +1,6 @@
-package iogame.model.fleet;
+package model.fleet;
 
-import iogame.model.planet.Planet;
+import model.planet.Planet;
 
 public class Movement {
 

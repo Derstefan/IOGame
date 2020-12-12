@@ -1,6 +1,6 @@
-package iogame.model.planet.buildings;
+package model.planet.buildings;
 
-import iogame.model.enums.EResource;
+import model.enums.EResource;
 
 import java.util.HashMap;
 

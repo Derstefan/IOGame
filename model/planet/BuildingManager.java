@@ -1,6 +1,6 @@
-package iogame.model.planet;
+package model.planet;
 
-import iogame.model.planet.buildings.Building;
+import model.planet.buildings.Building;
 
 import java.util.List;
 
