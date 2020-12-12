@@ -1,14 +1,28 @@
-package model.ship.modules;
+package src.main.java.org.iogame.model.fleet.ship.modules;
 
-import model.enums.EResource;
+import org.iogame.model.data.EResource;
+import src.main.java.org.iogame.model.data.EModule;
 
 import java.util.HashMap;
 
-public class BodyMod extends Module{
+public abstract class BodyMod extends Module{
     private double agility;
-    private final int slot;
 
-    public BodyMod(String name, String description, HashMap<EResource, Double> costs, double duration) {
-        super(name, description, costs, duration);
+
+    public BodyMod(EModule emodule, String name, String description,
+                   HashMap<EResource, Double> cost, double duration, int quantity, int slot,
+                   double agility) {
+        super(emodule, name, description, cost, slot,duration, quantity);
+        this.agility = agility;
+    }
+
+    // Getter
+    public double getAgility() {
+        return agility;
+    }
+
+    // Setter
+    public void setAgility(double agility) {
+        this.agility = agility;
     }
 }

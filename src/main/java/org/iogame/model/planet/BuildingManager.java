@@ -1,4 +1,4 @@
-package org.iogame.model.planet;
+package src.main.java.org.iogame.model.planet;
 
 import org.iogame.model.data.EBuilding;
 import org.iogame.model.planet.buildings.Building;
