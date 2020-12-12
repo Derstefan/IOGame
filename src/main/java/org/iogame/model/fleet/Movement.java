@@ -3,7 +3,7 @@ package org.iogame.model.fleet;
 import org.iogame.model.planet.Planet;
 
 public class Movement {
-
+	// can be null (e.g. with retreat) ?
 	private Planet origin;
 	private Planet target;
 

@@ -1,6 +1,6 @@
 package org.iogame.model.planet;
 
-import org.iogame.model.enums.EBuilding;
+import org.iogame.model.data.EBuilding;
 
 public class Planet {
     private double x;
@@ -24,6 +24,7 @@ public class Planet {
         miningManager.loop(delta);
     }
 
+
     public boolean buildBuilding(EBuilding BuildingType){
         return buildingManager.startBuild(BuildingType);
     }
@@ -31,6 +32,9 @@ public class Planet {
     public boolean destroyBuilding(EBuilding BuildingType){
         return buildingManager.destroy(BuildingType);
     }
+
+
+    // Getter Setter
 
     public double getX() {
         return x;

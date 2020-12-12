@@ -4,6 +4,7 @@ import org.iogame.model.planet.Planet;
 
 public class Fleet {
 
+	private String name;
 	private double x;
 	private double y;
 	private double dx;
@@ -36,11 +37,14 @@ public class Fleet {
 	}
 	
 	public void arrive() {
-		System.out.println("i have arrived!!");
+
 		location = movement.getTarget();
 		x= location.getX();
 		y= location.getY();
+		System.out.println("i have arrived!!");
 		movement = null;
+
+
 	}
 	
 	public Planet getLocation() {

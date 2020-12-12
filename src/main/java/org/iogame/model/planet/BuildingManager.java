@@ -1,6 +1,6 @@
 package org.iogame.model.planet;
 
-import org.iogame.model.enums.EBuilding;
+import org.iogame.model.data.EBuilding;
 import org.iogame.model.planet.buildings.Building;
 
 import java.util.HashMap;
