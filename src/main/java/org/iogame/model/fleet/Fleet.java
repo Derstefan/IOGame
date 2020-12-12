@@ -1,9 +1,16 @@
+<<<<<<< HEAD:model/fleet/Fleet.java
 package model.fleet;
 
 import model.planet.Planet;
+=======
+package org.iogame.model.fleet;
+
+import org.iogame.model.planet.Planet;
+>>>>>>> master:src/main/java/org/iogame/model/fleet/Fleet.java
 
 public class Fleet {
 
+	private String name;
 	private double x;
 	private double y;
 	private double dx;
@@ -13,9 +20,7 @@ public class Fleet {
 	
 	private Movement movement = null;
 	
-	private Planet location= null;
-	
-
+	private Planet location;
 
 	public Fleet(double speed,Planet location) {
 		this.x = location.getX();
@@ -38,11 +43,14 @@ public class Fleet {
 	}
 	
 	public void arrive() {
-		System.out.println("i have arrived!!");
+
 		location = movement.getTarget();
 		x= location.getX();
 		y= location.getY();
+		System.out.println("i have arrived!!");
 		movement = null;
+
+
 	}
 	
 	public Planet getLocation() {
@@ -110,11 +118,8 @@ public class Fleet {
 		System.out.println("dx=" + dx + " , dy = " +dy);
 		location = null;
 	}
-	
-	
-	private double getTravelDistance() {
-		
 
+	private double getTravelDistance() {
 		double x2 =movement.getTarget().getX();
 		double y2 =movement.getTarget().getY();
 		
