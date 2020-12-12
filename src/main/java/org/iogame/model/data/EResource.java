@@ -1,4 +1,4 @@
-package org.iogame.model.enums;
+package org.iogame.model.data;
 
 public enum EResource {
     RES1,

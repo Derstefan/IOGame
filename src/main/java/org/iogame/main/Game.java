@@ -1,8 +1,11 @@
 package org.iogame.main;
 
+import org.iogame.model.battle.Battle;
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.fleet.Movement;
 import org.iogame.model.planet.Planet;
+import org.iogame.model.player.Player;
+import org.iogame.model.player.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,9 @@ public class Game extends Thread {
 
 	private List<Planet> planets = new ArrayList<>();
 	private List<Fleet> fleets = new ArrayList<>();
+	private List<Player> player = new ArrayList<>();
+	private List<Team> teams = new ArrayList<>();
+	private List<Battle> battle = new ArrayList<>();
 
 	public Game() {
 		Planet p = new Planet(4.0,7.0);
@@ -53,10 +59,16 @@ public class Game extends Thread {
 			p.loop(delta);
 		}
 	}
-
-	private void moveTo(Fleet fleet, Planet planet) {
+	//Controllerfunctions
+	public void moveTo(Fleet fleet, Planet planet) {
 		Movement movement = new Movement(fleet.getLocation(),planet);
 		fleet.setMovement(movement);
 	}
+
+
+
+	// Events
+
+
 
 }
