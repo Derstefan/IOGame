@@ -1,6 +1,5 @@
 package org.iogame.main;
 
-import org.iogame.model.battle.Battle;
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.fleet.Movement;
 import org.iogame.model.planet.Planet;
@@ -12,63 +11,94 @@ import java.util.List;
 
 public class Game extends Thread {
 
-	private long lastTime;
+    private long lastTime;
 
-	private List<Planet> planets = new ArrayList<>();
-	private List<Fleet> fleets = new ArrayList<>();
-	private List<Player> player = new ArrayList<>();
-	private List<Team> teams = new ArrayList<>();
-	private List<Battle> battle = new ArrayList<>();
+    private List<Planet> planets = new ArrayList<>();
+    private List<Fleet> fleets = new ArrayList<>();
+    private List<Player> player = new ArrayList<>();
+    private List<Team> teams = new ArrayList<>();
+    //private List<Movement> movements = new ArrayList<>();
+    //private List<Battle> battles = new ArrayList<>();
 
-	public Game() {
-		Planet p = new Planet(4.0,7.0);
-		Planet p2 = new Planet(2.0,6.0);
-		planets.add(p);
-		planets.add(p2);
+    private boolean stopped = false;
+    private boolean paused = false;
 
-		Fleet f = new Fleet(1,p);
-		fleets.add(f);
-		moveTo(f,p2);
-		for(int i=0;i<100;i++) {
-		loop(0.1);
-		}
-		lastTime= System.currentTimeMillis();
-	}
 
-	/*
-	Threadfunction
-	 */
-	public void run() {
-		long now = System.currentTimeMillis();
-		double delta = (now - lastTime)/1000;
-		lastTime=now;
-		loop(delta);
-	}
+    public Game() {
+        Team t1 = new Team("rot");
+        Team t2 = new Team("blau");
 
-	/*
-	Mainloop with delta as timediff in s to last call
-	 */
-	public void loop(double delta) {
-		//Fleets
-		for (Fleet f:fleets) {
-			f.move(delta);
-		}
-
-		//Planets
-		for(Planet p:planets){
-			p.loop(delta);
-		}
-	}
-	//Controllerfunctions
-	public void moveTo(Fleet fleet, Planet planet) {
-		Movement movement = new Movement(fleet.getLocation(),planet);
-		fleet.setMovement(movement);
-	}
+        Player tilman = new Player("tilman",t1);
+        Player gerardo = new Player("gerardo",t2);
 
 
 
-	// Events
+        Planet p1 = new Planet(4.0, 7.0);
+        Planet p2 = new Planet(2.0, 6.0);
+        planets.add(p1);
+        planets.add(p2);
 
+        Fleet f1 = new Fleet(0.001, p1, tilman);
+        Fleet f2 = new Fleet(0.001, p2, gerardo);
+        fleets.add(f1);
+        fleets.add(f2);
+
+
+        moveTo(f1, p2);
+/*		for(int i=0;i<100;i++) {
+		update(0.1);
+		}*/
+        lastTime = System.currentTimeMillis();
+    }
+
+    /*
+    Threadfunction
+     */
+    public void run() {
+        try {
+            long now = System.currentTimeMillis();
+            long delta = (now - lastTime);
+            lastTime = now;
+            System.out.println(delta);
+            if (!paused) {
+                update(delta);
+            }
+            Thread.sleep(200);
+            if (!stopped) {
+                run();
+            }
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+        System.out.println("game over");
+    }
+
+    /*
+    Mainloop with delta as timediff (in s) to last call
+     */
+    public void update(long delta) {
+
+        //Fleets
+        for (Fleet f : fleets) {
+            f.update(delta);
+        }
+
+        //Planets
+        for (Planet p : planets) {
+            p.update(delta);
+            if (p.getBattle() != null) {
+                //Battles
+                p.getBattle().update(delta);
+            }
+        }
+
+    }
+
+    //Controllerfunctions
+    public void moveTo(Fleet fleet, Planet planet) {
+        Movement movement = new Movement(fleet.getLocation(), planet);
+        fleet.setMovement(movement);
+    }
 
 
 }

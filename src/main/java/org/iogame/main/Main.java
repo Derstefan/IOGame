@@ -1,6 +1,7 @@
 package org.iogame.main;
 
 import org.iogame.main.Game;
+import org.iogame.model.data.EResource;
 
 public class Main {
 
@@ -8,7 +9,7 @@ public class Main {
 
 		Game game = new Game();
 		game.start();
-		System.out.println("");
+
 	}
 
 }
