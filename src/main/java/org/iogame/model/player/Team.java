@@ -1,8 +1,15 @@
 package org.iogame.model.player;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
-    private List<Player> player = new ArrayList<>();
+
+    private final String name;
+    private final List<Player> players;
+
+    public Team(String name, List<Player> players) {
+        this.name = name;
+        this.players = players;
+    }
+
 }

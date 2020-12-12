@@ -12,15 +12,19 @@ import java.util.List;
 
 public class Game extends Thread {
 
+	private static final int MAX_PLAYERS = 5;
+
 	private long lastTime;
 
+	private final String name;
 	private List<Planet> planets = new ArrayList<>();
 	private List<Fleet> fleets = new ArrayList<>();
-	private List<Player> player = new ArrayList<>();
+	private List<Player> players = new ArrayList<>();
 	private List<Team> teams = new ArrayList<>();
 	private List<Battle> battle = new ArrayList<>();
 
-	public Game() {
+	public Game(String name) {
+		this.name = name;
 		Planet p = new Planet(4.0,7.0);
 		Planet p2 = new Planet(2.0,6.0);
 		planets.add(p);
@@ -45,6 +49,10 @@ public class Game extends Thread {
 		loop(delta);
 	}
 
+	public String gameName() {
+		return this.name;
+	}
+
 	/*
 	Mainloop with delta as timediff in s to last call
 	 */
@@ -59,13 +67,23 @@ public class Game extends Thread {
 			p.loop(delta);
 		}
 	}
+
 	//Controllerfunctions
 	public void moveTo(Fleet fleet, Planet planet) {
 		Movement movement = new Movement(fleet.getLocation(),planet);
 		fleet.setMovement(movement);
 	}
 
+	public void join(Player player) throws IllegalArgumentException {
+		if (players.size() < MAX_PLAYERS) {
+			this.players.add(player);
+		}
+		throw new IllegalArgumentException("Maximum number of players reached.");
+	}
 
+	public void leave(Player player) {
+		players.remove(player);
+	}
 
 	// Events
 
