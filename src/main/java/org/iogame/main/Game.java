@@ -11,13 +11,11 @@ import java.util.List;
 
 public class Game extends Thread {
 
-  private static final int MAX_PLAYERS = 5;
-  
     private long lastTime;
 
     private List<Planet> planets = new ArrayList<>();
     private List<Fleet> fleets = new ArrayList<>();
-    private List<Player> players = new ArrayList<>();
+    private List<Player> player = new ArrayList<>();
     private List<Team> teams = new ArrayList<>();
     //private List<Movement> movements = new ArrayList<>();
     //private List<Battle> battles = new ArrayList<>();
@@ -26,8 +24,7 @@ public class Game extends Thread {
     private boolean paused = false;
 
 
-   public Game(String name) {
-		this.name = name;
+    public Game() {
         Team t1 = new Team("rot");
         Team t2 = new Team("blau");
 
@@ -102,20 +99,6 @@ public class Game extends Thread {
         Movement movement = new Movement(fleet.getLocation(), planet);
         fleet.setMovement(movement);
     }
-  
-  public void join(Player player) throws IllegalArgumentException {
-		if (players.size() < MAX_PLAYERS) {
-			this.players.add(player);
-		}
-		throw new IllegalArgumentException("Maximum number of players reached.");
-	}
-
-	public void leave(Player player) {
-		players.remove(player);
-	}
-  	public String gameName() {
-		return this.name;
-	}
 
 
 }
