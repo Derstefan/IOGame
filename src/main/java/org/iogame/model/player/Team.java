@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Team {
     private String name;
-    private List<Player> player = new ArrayList<>();
+    private List<Player> players = new ArrayList<>();
 
     public Team(String name) {
         this.name = name;

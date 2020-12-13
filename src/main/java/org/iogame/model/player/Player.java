@@ -8,14 +8,11 @@ public class Player {
     public Player(String name, Team team) {
         this.name = name;
         this.team = team;
+        this.planets = new ArrayList<>();
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Team getTeam() {

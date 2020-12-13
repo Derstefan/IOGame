@@ -11,6 +11,9 @@ import java.util.List;
 
 public class Game extends Thread {
 
+    private static final int MAX_PLAYERS = 5;
+    private final String name;
+
     private long lastTime;
 
     private List<Planet> planets = new ArrayList<>();
@@ -100,5 +103,19 @@ public class Game extends Thread {
         fleet.setMovement(movement);
     }
 
+    public void join(Player player) throws IllegalArgumentException {
+        if (players.size() < MAX_PLAYERS) {
+            this.players.add(player);
+        }
+        throw new IllegalArgumentException("Maximum number of players reached.");
+    }
+
+    public void leave(Player player) {
+        players.remove(player);
+    }
+
+    public String gameName() {
+        return this.name;
+    }
 
 }
