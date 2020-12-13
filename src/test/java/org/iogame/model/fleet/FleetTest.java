@@ -12,7 +12,7 @@ class FleetTest {
 
     @Test
     void shouldCreateFleet() {
-        Game game = new Game();
+        Game game = new Game("test");
         Player player = new Player("p1",new Team("rot"));
         Planet location = new Planet(0.0D, 0.0D);
         Fleet fleet = new Fleet(0.5D, location,player);
