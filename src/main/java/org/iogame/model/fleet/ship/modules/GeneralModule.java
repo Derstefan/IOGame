@@ -7,7 +7,7 @@ import org.iogame.model.data.dataModules;
 import java.util.HashMap;
 
 
-public abstract class Module {
+public abstract class GeneralModule {
     private final EModule emodule;
     private final String name;
     private final String description;
@@ -16,8 +16,8 @@ public abstract class Module {
     private double duration;
     private final int quantity;
 
-    public Module(EModule emodule, String name, String description,
-                  HashMap<EResource, Double> cost, int slot, double duration, int quantity) {
+    public GeneralModule(EModule emodule, String name, String description,
+                         HashMap<EResource, Double> cost, int slot, double duration, int quantity) {
         this.emodule = emodule;
         this.name = name;
         this.description = description;
@@ -29,8 +29,8 @@ public abstract class Module {
 
 
 
-    // Use this function to create a module
-    public static Module instantiateModule(EModule moduleEnum, int quantity){
+    // Use this function to create a module  // TODO: Move this to the Blueprint Editor and ShipBuilder; shouldn't be inside here!
+    public static GeneralModule instantiateModule(EModule moduleEnum, int quantity){
         return dataModules.instantiateModule(moduleEnum, quantity);
     }
 
@@ -51,12 +51,28 @@ public abstract class Module {
         return cost;
     }
 
+    public HashMap<EResource, Double> getTotalCost(){
+        HashMap<EResource, Double> totalCost = new HashMap<>();
+        for(EResource res: this.cost.keySet()){
+            totalCost.put(res, this.cost.get(res) * this.quantity);
+        }
+        return totalCost;
+    };
+
     public int getSlot() {
         return slot;
     }
 
+    public int getTotalSlot(){
+        return this.slot * this.quantity;
+    };
+
     public double getDuration() {
         return duration;
+    }
+
+    public double getTotalDuration() {
+        return this.duration * this.quantity;
     }
 
     public int getQuantity() {

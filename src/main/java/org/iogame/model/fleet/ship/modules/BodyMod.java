@@ -5,7 +5,7 @@ import org.iogame.model.data.EModule;
 
 import java.util.HashMap;
 
-public abstract class BodyMod extends Module{
+public abstract class BodyMod extends GeneralModule {
     private double speed;
     private double agility;
 
@@ -23,8 +23,17 @@ public abstract class BodyMod extends Module{
         return agility;
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
     // Setter
     public void setAgility(double agility) {
         this.agility = agility;
     }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
 }

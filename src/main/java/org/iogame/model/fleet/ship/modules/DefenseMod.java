@@ -5,7 +5,7 @@ import org.iogame.model.data.EModule;
 
 import java.util.HashMap;
 
-public abstract class DefenseMod extends Module{
+public abstract class DefenseMod extends GeneralModule {
     private final String defenseType;
     private double hitPoints;
     private double regeneration;
@@ -22,6 +22,18 @@ public abstract class DefenseMod extends Module{
         return this.hitPoints;
     }
 
+    public double getTotalHitPoints() {
+        return this.hitPoints * this.getQuantity();
+    }
+
+    public abstract double getShield();
+
+    public abstract double getTotalShield();
+
+    public abstract double getArmor();
+
+    public abstract double getTotalArmor();
+
     public double getRegeneration() {
         return regeneration;
     }
@@ -31,12 +43,15 @@ public abstract class DefenseMod extends Module{
     }
 
     // Setter
-    public void setShield(double hitPoints) {
+    public void setHitPoints(double hitPoints) {
         this.hitPoints = hitPoints;
     }
 
     public void setRegeneration(double regeneration) {
         this.regeneration = regeneration;
     }
+
+
+
 }
 

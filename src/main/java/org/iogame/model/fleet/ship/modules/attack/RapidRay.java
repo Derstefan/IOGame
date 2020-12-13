@@ -9,8 +9,8 @@ import java.util.HashMap;
 public class RapidRay extends AttackMod {
     public RapidRay(EModule emodule, String name, String description, HashMap<EResource, Double> cost, int slot,
                     double duration, int quantity,
-                    String damageType, int recharge, double damage) {
+                    String damageType, int recharge, double damage, double accuracy) {
         super(emodule, name, description, cost, slot,duration,
-                quantity, damageType, recharge, damage);
+                quantity, damageType, recharge, damage, accuracy);
     }
 }

@@ -12,4 +12,32 @@ public class TurtleShield extends DefenseMod{
         super(emodule, name, description, cost, slot,duration,
                 quantity, type, hitPoints, regeneration);
     }
+
+    @Override
+    public double getShield() {
+        if(this.getDefenseType().equals("shield")){
+            return this.getHitPoints();
+        } else {return 0.0;}
+    }
+
+    @Override
+    public double getTotalShield() {
+        if(this.getDefenseType().equals("shield")){
+            return this.getTotalHitPoints();
+        } else {return 0.0;}
+    }
+
+    @Override
+    public double getArmor() {
+        if(this.getDefenseType().equals("armor")){
+            return this.getHitPoints();
+        } else {return 0.0;}
+    }
+
+    @Override
+    public double getTotalArmor() {
+        if(this.getDefenseType().equals("armor")){
+            return this.getTotalHitPoints();
+        } else {return 0.0;}
+    }
 }

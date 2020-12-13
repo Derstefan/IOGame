@@ -5,7 +5,7 @@ import org.iogame.model.data.EModule;
 
 import java.util.HashMap;
 
-public abstract class SpecialMod extends Module{
+public abstract class SpecialMod extends GeneralModule {
     private final String bonus; // TODO: How to implement Bonuses? Extra Class?!
     private final int max;
     private final double cargoVolume;
@@ -31,4 +31,11 @@ public abstract class SpecialMod extends Module{
     public double getCargoVolume() {
         return cargoVolume;
     }
+
+    public double totalCargoVolume() {
+        return this.cargoVolume * this.getQuantity();
+    }
+
+    // Setter
+
 }

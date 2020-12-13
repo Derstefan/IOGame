@@ -12,4 +12,5 @@ public class Cargo extends SpecialMod {
         super(emodule, name, description, cost, slot, duration,
                 quantity, bonus, max, cargoVolume);
     }
+
 }
