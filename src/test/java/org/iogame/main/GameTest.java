@@ -8,7 +8,7 @@ class GameTest {
 
     @BeforeEach
     void setup() {
-        this.game = new Game("test");
+        this.game = new Game();
     }
 
 }
