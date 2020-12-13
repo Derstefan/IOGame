@@ -1,9 +1,10 @@
 package org.iogame.model.fleet;
 
-import org.iogame.main.Game;
 import org.iogame.model.battle.Battle;
 import org.iogame.model.planet.Planet;
 import org.iogame.model.player.Player;
+
+
 
 public class Fleet {
 
