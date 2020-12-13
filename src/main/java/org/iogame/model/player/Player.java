@@ -1,6 +1,10 @@
 package org.iogame.model.player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
+    private final List<Player> planets;
     private String name;
     private Team team;
 
@@ -8,14 +12,11 @@ public class Player {
     public Player(String name, Team team) {
         this.name = name;
         this.team = team;
+        this.planets = new ArrayList<>();
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Team getTeam() {
