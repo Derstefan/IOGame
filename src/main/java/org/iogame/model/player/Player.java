@@ -1,6 +1,10 @@
 package org.iogame.model.player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
+    private final List<Player> planets;
     private String name;
     private Team team;
 
