@@ -6,7 +6,7 @@ import org.iogame.model.data.EModule;
 import java.util.HashMap;
 
 public abstract class SpecialMod extends Module{
-    private final String bonus;
+    private final String bonus; // TODO: How to implement Bonuses? Extra Class?!
     private final int max;
     private final double cargoVolume;
 

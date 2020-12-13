@@ -6,16 +6,16 @@ import org.iogame.model.data.EModule;
 import java.util.HashMap;
 
 public abstract class AttackMod extends Module{
-    private final String attackType;
+    private final String damageType; // TODO: Which damage Type? Ideas are "armor", "shield", "splash", ...
     private final int recharge;
-    private double attackRate;
+    private double damage;
     public AttackMod(EModule emodule, String name, String description, HashMap<EResource, Double> cost,
                      int slot, double duration, int quantity,
-                     String attackType, int recharge, double attackRate) {
+                     String damageType, int recharge, double damage) {
         super(emodule, name, description, cost, slot,duration, quantity);
-        this.attackType = attackType;
+        this.damageType = damageType;
         this.recharge = recharge;
-        this.attackRate = attackRate;
+        this.damage = damage;
 
     }
 }

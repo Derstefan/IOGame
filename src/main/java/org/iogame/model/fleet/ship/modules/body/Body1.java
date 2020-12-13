@@ -8,9 +8,10 @@ import java.util.HashMap;
 
 public class Body1 extends BodyMod {
     public Body1(EModule emodule, String name, String description,
-                 HashMap<EResource, Double> cost, double duration, int quantity,
-                 int slot, double agility) {
-        super(emodule, name, description, cost, duration, quantity, slot, agility);
+                 HashMap<EResource, Double> cost, double duration, int quantity, int slot,
+                 double speed, double agility) {
+        super(emodule, name, description, cost, duration, quantity, slot,
+                speed, agility);
     }
 
 }

@@ -9,8 +9,8 @@ import java.util.HashMap;
 
 public abstract class Module {
     private final EModule emodule;
-    private final String name; //TODO: Implement Lookup
-    private final String description; //TODO: Implement Lookup
+    private final String name;
+    private final String description;
     private HashMap<EResource, Double> cost;
     private final int slot; // slot consumption for all modules except BodyModule, which provide slot
     private double duration;

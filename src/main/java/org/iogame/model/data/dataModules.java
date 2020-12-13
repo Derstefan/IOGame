@@ -18,6 +18,7 @@ public abstract class dataModules {
 
         // body parameters of BodyMod Class
         int slot = 1;
+        double speed;
         double agility;
 
         // special parameters of SpecialMod Class
@@ -31,9 +32,9 @@ public abstract class dataModules {
         double regeneration = 0;
 
         // attack parameters of AttackMod Class
-        String attackType;
+        String damageType;
         int recharge;
-        double attackRate;
+        double damage;
 
         switch(emodule){
             // all body modules
@@ -44,9 +45,10 @@ public abstract class dataModules {
                 cost.put(EResource.LITHIUM, 4.0);
                 duration = 10.0;
                 slot = 2;
+                speed = 1.0;
                 agility = 1.0;
                 return new Body1(emodule, emodule.getName(), emodule.getDescription(),
-                        cost, duration, quantity, slot, agility);
+                        cost, duration, quantity, slot, speed,agility);
 
             // all special modules
             case CARGO:
@@ -85,12 +87,12 @@ public abstract class dataModules {
                 cost.put(EResource.LITHIUM, 4.0);
                 slot = 1;
                 duration = 10.0;
-                attackType = "armor";
+                damageType = "armor";
                 recharge = 2;
-                attackRate = 1.0;
+                damage = 1.0;
                 return new RapidRay(emodule, emodule.getName(), emodule.getDescription(),
                         cost, slot,duration, quantity,
-                        attackType, recharge, attackRate);
+                        damageType, recharge, damage);
 
 
             default:
