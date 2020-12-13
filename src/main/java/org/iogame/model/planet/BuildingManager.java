@@ -27,7 +27,7 @@ public class BuildingManager {
         this.planet = planet;
     }
 
-    public void loop(double delta){
+    public void update(long delta){
         if(!buildingQueue.isEmpty()){
             remainingTime-=delta;
             if(remainingTime<=0){

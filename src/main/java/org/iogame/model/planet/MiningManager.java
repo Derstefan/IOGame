@@ -25,7 +25,7 @@ public class MiningManager {
         }
     }
 
-    public void loop(double delta) {
+    public void update(long delta) {
 
         for (EResource r : EResource.values()) {
             double mineAmount = miningRate.get(r) * resourceDeposit.getAccessability(r);

@@ -7,12 +7,30 @@ import java.util.List;
 
 public class Player {
 
-    private final List<Planet> planets;
+    private List<Planet> planets;
     private final String name;
     private Team team;
 
-    public Player(String name) {
+
+    public Player(String name, Team team) {
         this.name = name;
-        this.planets = new ArrayList<>();
+        this.team = team;
+  this.planets = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
