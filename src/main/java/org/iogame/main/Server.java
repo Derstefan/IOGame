@@ -2,9 +2,11 @@ package org.iogame.main;
 
 import org.iogame.model.player.Player;
 import org.jetbrains.annotations.TestOnly;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+@Component("server")
 public final class Server {
 
     private static final Server server = new Server();
@@ -50,8 +52,14 @@ public final class Server {
         return this.games.get(gameId);
     }
 
+    public int getGameNumbers(){
+        return  games.size();
+    }
+
     @TestOnly
     void clearGames() {
         this.games.clear();
     }
+
+
 }
