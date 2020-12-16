@@ -1,26 +1,49 @@
 package org.iogame.controller;
 
+import org.iogame.main.Game;
 import org.iogame.main.Server;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/test2")
+@RequestMapping("/main")
 public class ServerController {
+
+    private final int maxGames = 3;
+
 
     @Autowired
     private Server server;
 
-    @RequestMapping("/games")
+    @RequestMapping("/numberofgames")
     public String getNumber() {
-        return "number of games "+server.getGameNumbers();
+        return ""+server.getGameNumbers();
     }
 
     @RequestMapping("/newgame")
     public String createGame() {
-        System.out.println(server.createGame("game"+server.getGameNumbers()));
+        if(server.getGameNumbers()<maxGames) {
+            UUID id = server.createGame("game" + server.getGameNumbers());
+            return "http://www.iogame.de/games/"+id.toString()+"/";
+        }else {
+            return "";
+        }
 
-        return "created Game";
+    }
+
+    @RequestMapping("/gameids")
+    public List<String> games() {
+        List<String> list = new ArrayList<>();
+        for (UUID uuid:server.getGameUUIDs()) {
+            list.add(uuid.toString());
+        }
+        return list;
     }
 }

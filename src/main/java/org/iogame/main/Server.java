@@ -56,6 +56,10 @@ public final class Server {
         return  games.size();
     }
 
+    public Set<UUID> getGameUUIDs(){
+        return  games.keySet();
+    }
+
     @TestOnly
     void clearGames() {
         this.games.clear();
