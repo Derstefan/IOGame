@@ -64,7 +64,7 @@ public class Game extends Thread {
             long now = System.currentTimeMillis();
             long delta = (now - lastTime);
             lastTime = now;
-            System.out.println(delta);
+            //System.out.println(delta);
             if (!paused) {
                 update(delta);
             }
