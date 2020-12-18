@@ -45,6 +45,10 @@ public class Planet extends GameObject {
     public void update(long delta) {
         buildingManager.update(delta);
         miningManager.update(delta);
+        if (getBattle() != null) {
+            //Battles
+            getBattle().update(delta);
+        }
     }
 
 

@@ -61,60 +61,17 @@ public class Fleet extends GameObject {
         return location;
     }
 
-    public void setLocation(Planet location) {
-        this.location = location;
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double getDx() {
-        return dx;
-    }
-
-    public void setDx(double dx) {
-        this.dx = dx;
-    }
-
-    public double getDy() {
-        return dy;
-    }
-
-    public void setDy(double dy) {
-        this.dy = dy;
+    public void moveTo(Planet planet) {
+        Movement movement = new Movement(getLocation(), planet);
+        setMovement(movement);
     }
 
     public double getSpeed() {
         return speed;
     }
 
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
-    public Movement getMovement() {
-        return movement;
-    }
-
     public Player getPlayer() {
         return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public void setMovement(Movement movement) {
