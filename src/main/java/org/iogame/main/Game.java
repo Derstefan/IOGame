@@ -55,24 +55,21 @@ public class Game extends Thread {
         lastTime = System.currentTimeMillis();
     }
 
-    /*
-    Threadfunction
-     */
+    @Override
     public void run() {
-        try {
-            long now = System.currentTimeMillis();
-            long delta = (now - lastTime);
-            lastTime = now;
-            //System.out.println(delta);
-            if (!paused) {
-                update(delta);
+        long lastTime = System.currentTimeMillis();
+        while (!stopped) {
+            try {
+                long now = System.currentTimeMillis();
+                long delta = (now - lastTime);
+                lastTime = now;
+                if (!paused) {
+                    update(delta);
+                }
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                System.out.println(e);
             }
-            Thread.sleep(200);
-            if (!stopped) {
-                run();
-            }
-        } catch (InterruptedException e) {
-            System.out.println(e);
         }
         System.out.println("game over");
     }
@@ -119,4 +116,10 @@ public class Game extends Thread {
         return this.name;
     }
 
+    private <T extends GameObject> List<T> getUnchecked(Class<T> clazz) {
+        List<T> castObjects = new ArrayList<>();
+        List<GameObject> gameObjects = this.gameObjects.get(clazz);
+        gameObjects.forEach(gameObject -> castObjects.add((T) gameObject));
+        return castObjects;
+    }
 }
