@@ -15,4 +15,11 @@ public class Battle {
 
     }
 
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
+    }
 }

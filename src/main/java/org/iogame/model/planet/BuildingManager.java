@@ -1,5 +1,6 @@
 package org.iogame.model.planet;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.iogame.model.data.EBuilding;
 import org.iogame.model.planet.buildings.Building;
 
@@ -15,6 +16,7 @@ public class BuildingManager {
     private final Map<EBuilding, Building> buildings;
     private final List<EBuilding> buildingQueue;
     private final Storage storage;
+
     private final Planet planet;
 
 
@@ -90,5 +92,13 @@ public class BuildingManager {
             return true;
         }
         return false;
+    }
+
+    public double getRemainingTime() {
+        return remainingTime;
+    }
+
+    public void setRemainingTime(double remainingTime) {
+        this.remainingTime = remainingTime;
     }
 }

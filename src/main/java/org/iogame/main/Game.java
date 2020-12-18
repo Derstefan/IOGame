@@ -1,5 +1,6 @@
 package org.iogame.main;
 
+import org.iogame.model.battle.Battle;
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.fleet.Movement;
 import org.iogame.model.planet.Planet;
@@ -32,6 +33,9 @@ public class Game extends Thread {
 
         Team t1 = new Team("rot");
         Team t2 = new Team("blau");
+        teams.add(t1);
+        teams.add(t2);
+
 
         Player tilman = new Player("tilman",t1);
         Player gerardo = new Player("gerardo",t2);
@@ -116,8 +120,73 @@ public class Game extends Thread {
         players.remove(player);
     }
 
+
+
+    // Getter and Setter
+
     public String gameName() {
         return this.name;
     }
 
+    public List<Planet> getPlanets() {
+        return planets;
+    }
+
+    public void setPlanets(List<Planet> planets) {
+        this.planets = planets;
+    }
+
+    public List<Fleet> getFleets() {
+        return fleets;
+    }
+
+    public void setFleets(List<Fleet> fleets) {
+        this.fleets = fleets;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
+
+    public List<Battle> getBattles() {
+        List<Battle> battles = new ArrayList<>();
+        for (Planet p : planets) {
+            if(p.getBattle()!=null) {
+                battles.add(p.getBattle());
+            }
+        }
+        return battles;
+    }
+
+
+
+
+
+    public boolean isStopped() {
+        return stopped;
+    }
+
+    public void setStopped(boolean stopped) {
+        this.stopped = stopped;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
+    }
 }

@@ -17,7 +17,9 @@ public final class Server {
     private final Map<UUID, Game> games;
 
     private Server() {
+
         this.games = new HashMap<>();
+        createGame("testGame");
     }
 
     /**
