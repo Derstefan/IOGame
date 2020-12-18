@@ -26,6 +26,23 @@ public class Game extends Thread {
         this.gameObjects = new HashMap<>();
         this.players = new LinkedList<>();
         this.teams = new LinkedList<>();
+        debug();
+    }
+
+    public void debug() {
+        Team t1 = new Team("rot");
+        Team t2 = new Team("blau");
+
+        Player tilman = new Player("tilman",t1);
+        Player gerardo = new Player("gerardo",t2);
+
+        Planet p1 = createPlanet(4.0, 7.0);
+        Planet p2 = createPlanet(2.0, 6.0);
+
+        Fleet f1 = createFleet(0.001, p1, tilman);
+        Fleet f2 = createFleet(0.001, p2, gerardo);
+
+        getFleetById(f1.getId()).moveTo(p2);
     }
 
     @Override
