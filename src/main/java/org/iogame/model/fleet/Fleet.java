@@ -61,6 +61,23 @@ public class Fleet extends GameObject {
 
     }
 
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getDx() {
+        return dx;
+    }
+
+    public double getDy() {
+        return dy;
+    }
+
+
     public Planet getLocation() {
         return location;
     }

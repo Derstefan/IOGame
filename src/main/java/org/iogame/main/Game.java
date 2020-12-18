@@ -119,6 +119,14 @@ public class Game extends Thread {
         return getUnchecked(Fleet.class);
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public List<Team> getTeams() {
+        return teams;
+    }
+
     public Planet getPlanetById(UUID id) {
         return (Planet) this.gameObjects.get(Planet.class).get(id);
     }
@@ -136,7 +144,7 @@ public class Game extends Thread {
 
     public List<Battle> getBattles() {
         List<Battle> battles = new ArrayList<>();
-        for (Planet p : planets) {
+        for (Planet p : getPlanets()) {
             if(p.getBattle()!=null) {
                 battles.add(p.getBattle());
             }
