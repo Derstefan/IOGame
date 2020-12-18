@@ -1,21 +1,19 @@
 package org.iogame.model.fleet;
 
+import org.iogame.model.GameObject;
 import org.iogame.model.battle.Battle;
 import org.iogame.model.planet.Planet;
 import org.iogame.model.player.Player;
 
 
 
-public class Fleet {
+public class Fleet extends GameObject {
 
-
-    private String name;
     private double x;
     private double y;
     private double dx;
     private double dy;
     private double speed;
-    private boolean returned = false;
 
     private Movement movement = null;
 
@@ -32,19 +30,17 @@ public class Fleet {
         location.getFleets().add(this);
     }
 
-    //return true if arrived
-    public boolean update(double delta) {
+    @Override
+    public void update(long delta) {
         if (movement != null) {
             double nextStep = Math.sqrt(Math.pow(dx * speed * delta, 2) + Math.pow(dy * speed * delta, 2));
             if (getTravelDistance() <= nextStep) {
                 arrived();
-                return true;
             }
             x = x + dx * speed * delta;
             y = y + dy * speed * delta;
             //System.out.println("x=" + x + " , y = " + y);
         }
-        return false;
     }
 
     public void arrived() {

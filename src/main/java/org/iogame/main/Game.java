@@ -16,16 +16,15 @@ public class Game extends Thread {
 
     private long lastTime;
 
-    private List<Planet> planets = new ArrayList<>();
-    private List<Fleet> fleets = new ArrayList<>();
-    private List<Player> players = new ArrayList<>();
-    private List<Team> teams = new ArrayList<>();
+    private final List<Planet> planets = new ArrayList<>();
+    private final List<Fleet> fleets = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();
+    private final List<Team> teams = new ArrayList<>();
     //private List<Movement> movements = new ArrayList<>();
     //private List<Battle> battles = new ArrayList<>();
 
     private boolean stopped = false;
     private boolean paused = false;
-
 
     public Game(String name) {
         this.name = name;
