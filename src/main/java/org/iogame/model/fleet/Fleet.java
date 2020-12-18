@@ -1,5 +1,6 @@
 package org.iogame.model.fleet;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.iogame.model.GameObject;
 import org.iogame.model.battle.Battle;
 import org.iogame.model.planet.Planet;
@@ -14,9 +15,10 @@ public class Fleet extends GameObject {
     private double dx;
     private double dy;
     private double speed;
-
+    private boolean returned = false;
+    @JsonIgnore
     private Movement movement = null;
-
+@JsonIgnore
     private Planet location;
 
     private Player player;
@@ -48,11 +50,13 @@ public class Fleet extends GameObject {
         location = movement.getTarget();
         x = location.getX();
         y = location.getY();
+        dx=0;
+        dy=0;
         location.getFleets().add(this);
         if(!location.checkPeace() && location.getBattle()==null){
             location.setBattle(new Battle(this.location));
+            System.out.println("here??");
         }
-        System.out.println("arrived");
         movement = null;
 
     }
