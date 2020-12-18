@@ -1,5 +1,6 @@
 package org.iogame.main;
 
+import org.iogame.model.battle.Battle;
 import org.iogame.model.GameObject;
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.planet.Planet;
@@ -32,6 +33,8 @@ public class Game extends Thread {
     public void debug() {
         Team t1 = new Team("rot");
         Team t2 = new Team("blau");
+        teams.add(t1);
+        teams.add(t2);
 
         Player tilman = new Player("tilman",t1);
         Player gerardo = new Player("gerardo",t2);
@@ -116,6 +119,14 @@ public class Game extends Thread {
         return getUnchecked(Fleet.class);
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public List<Team> getTeams() {
+        return teams;
+    }
+
     public Planet getPlanetById(UUID id) {
         return (Planet) this.gameObjects.get(Planet.class).get(id);
     }
@@ -129,5 +140,15 @@ public class Game extends Thread {
         Collection<GameObject> gameObjects = this.gameObjects.get(clazz).values();
         gameObjects.forEach(gameObject -> castObjects.add((T) gameObject));
         return castObjects;
+    }
+
+    public List<Battle> getBattles() {
+        List<Battle> battles = new ArrayList<>();
+        for (Planet p : getPlanets()) {
+            if(p.getBattle()!=null) {
+                battles.add(p.getBattle());
+            }
+        }
+        return battles;
     }
 }

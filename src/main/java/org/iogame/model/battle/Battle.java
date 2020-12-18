@@ -15,4 +15,12 @@ public class Battle extends GameObject {
     public void update(long delta) {
 
     }
+
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
+    }
 }

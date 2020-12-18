@@ -1,6 +1,5 @@
 package org.iogame.controller;
 
-import org.iogame.main.Game;
 import org.iogame.main.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,11 +30,10 @@ public class ServerController {
     public String createGame() {
         if(server.getGameNumbers()<maxGames) {
             UUID id = server.createGame("game" + server.getGameNumbers());
-            return "http://www.iogame.de/games/"+id.toString()+"/";
+            return "http://localhost:8080/game/map/planets/"+id.toString()+"";
         }else {
             return "";
         }
-
     }
 
     @RequestMapping("/gameids")
