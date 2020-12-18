@@ -4,6 +4,7 @@ import org.iogame.model.fleet.Fleet;
 import org.iogame.model.planet.Planet;
 import org.iogame.model.player.Player;
 import org.iogame.model.player.Team;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,12 @@ public class Playground {
     @BeforeEach
     void setup() {
         this.game = new Game("test");
+    }
+
+    @AfterEach
+    void stopGame() {
+        this.game.interrupt();
+        this.game = null;
     }
 
     @Test
