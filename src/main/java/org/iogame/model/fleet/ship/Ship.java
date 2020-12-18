@@ -1,4 +1,11 @@
 package org.iogame.model.fleet.ship;
 
-public class Ship {
+import org.iogame.model.GameObject;
+
+public class Ship extends GameObject {
+
+    @Override
+    public void update(long delta) {
+
+    }
 }

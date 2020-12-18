@@ -1,12 +1,13 @@
 package org.iogame.model.planet.buildings;
 
+import org.iogame.model.GameObject;
 import org.iogame.model.data.EBuilding;
 import org.iogame.model.data.EResource;
 import org.iogame.model.planet.Planet;
 
 import java.util.HashMap;
 
-public abstract class Building {
+public abstract class Building extends GameObject {
     private final EBuilding type;
     private int lvl;
 
