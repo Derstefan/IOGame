@@ -1,5 +1,6 @@
 package org.iogame.main;
 
+import org.iogame.core.Id;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,8 +32,8 @@ class ServerTest {
 
     @Test
     void shouldGetGamesById() {
-        UUID gameId1 = server.createGame("test1");
-        UUID gameId2 = server.createGame("test2");
+        Id gameId1 = server.createGame("test1");
+        Id gameId2 = server.createGame("test2");
 
         assertEquals("test1", server.getGameById(gameId1).gameName());
         assertEquals("test2", server.getGameById(gameId2).gameName());

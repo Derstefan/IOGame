@@ -1,6 +1,6 @@
 package org.iogame.model.fleet.ship;
 
-import org.iogame.model.GameObject;
+import org.iogame.core.GameObject;
 
 public class Ship extends GameObject {
 

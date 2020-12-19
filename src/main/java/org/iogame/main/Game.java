@@ -1,7 +1,8 @@
 package org.iogame.main;
 
+import org.iogame.core.Id;
 import org.iogame.model.battle.Battle;
-import org.iogame.model.GameObject;
+import org.iogame.core.GameObject;
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.planet.Planet;
 import org.iogame.model.player.Player;
@@ -14,7 +15,7 @@ public class Game extends Thread {
     private static final int MAX_PLAYERS = 5;
     private final String name;
 
-    private final Map<Class<? extends GameObject>, Map<UUID, GameObject>> gameObjects;
+    private final Map<Class<? extends GameObject>, Map<Id, GameObject>> gameObjects;
 
     private final List<Player> players;
     private final List<Team> teams;
@@ -72,7 +73,7 @@ public class Game extends Thread {
      * This method will be called for every frame in the main loop.
      */
     public void update(long delta) {
-        for (Map<UUID, GameObject> innerMap : gameObjects.values()) {
+        for (Map<Id, GameObject> innerMap : gameObjects.values()) {
             for (GameObject gameObject : innerMap.values()) {
                 gameObject.update(delta);
             }
@@ -107,7 +108,7 @@ public class Game extends Thread {
     }
 
     public void addGameObject(GameObject gameObject) {
-        Map<UUID, GameObject> gameObjectList = this.gameObjects.computeIfAbsent(gameObject.getClass(), ignore -> new IdentityHashMap<>());
+        Map<Id, GameObject> gameObjectList = this.gameObjects.computeIfAbsent(gameObject.getClass(), ignore -> new IdentityHashMap<>());
         gameObjectList.put(gameObject.getId(), gameObject);
     }
 
@@ -127,11 +128,11 @@ public class Game extends Thread {
         return teams;
     }
 
-    public Planet getPlanetById(UUID id) {
+    public Planet getPlanetById(Id id) {
         return (Planet) this.gameObjects.get(Planet.class).get(id);
     }
 
-    public Fleet getFleetById(UUID id) {
+    public Fleet getFleetById(Id id) {
         return (Fleet) this.gameObjects.get(Fleet.class).get(id);
     }
 

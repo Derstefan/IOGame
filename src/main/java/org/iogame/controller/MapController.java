@@ -1,5 +1,6 @@
 package org.iogame.controller;
 
+import org.iogame.core.Id;
 import org.iogame.main.Game;
 import org.iogame.main.Server;
 import org.iogame.model.battle.Battle;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -28,12 +28,7 @@ public class MapController {
 
     @RequestMapping("/planets")
     public List<PlanetSync>  getPlanets(@PathVariable String id) {
-        //Testing
-        if(id.equals("1")){
-            UUID uuid = server.getGameUUIDs().iterator().next();
-            id=uuid.toString();
-        }
-        Game game = server.getGameById(UUID.fromString(id));
+        Game game = server.getGameById(Id.fromString(id));
 
         List<PlanetSync> planets=new ArrayList<>();
         for (Planet p:game.getPlanets()) {
@@ -44,12 +39,7 @@ public class MapController {
 
     @RequestMapping("/fleets")
     public List<FleetSync> getFleets(@PathVariable String id) {
-        //Testing
-        if(id.equals("1")){
-            UUID uuid = server.getGameUUIDs().iterator().next();
-            id=uuid.toString();
-        }
-        Game game = server.getGameById(UUID.fromString(id));
+        Game game = server.getGameById(Id.fromString(id));
 
         List<FleetSync> fleets =new ArrayList<>();
         for (Fleet f:game.getFleets()) {
@@ -60,12 +50,7 @@ public class MapController {
 
     @RequestMapping("/battles")
     public List<BattleSync>  getBattles(@PathVariable String id) {
-        //Testing
-        if(id.equals("1")){
-            UUID uuid = server.getGameUUIDs().iterator().next();
-            id=uuid.toString();
-        }
-        Game game = server.getGameById(UUID.fromString(id));
+        Game game = server.getGameById(Id.fromString(id));
 
         List<BattleSync> battles =new ArrayList<>();
         for (Battle b:game.getBattles()) {

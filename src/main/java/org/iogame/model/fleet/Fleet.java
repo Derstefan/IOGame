@@ -1,7 +1,7 @@
 package org.iogame.model.fleet;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.iogame.model.GameObject;
+import org.iogame.core.GameObject;
 import org.iogame.model.battle.Battle;
 import org.iogame.model.planet.Planet;
 import org.iogame.model.player.Player;
