@@ -29,7 +29,7 @@ class IdTest {
     }
 
     @Test
-    void testToString() {
+    void testFromString() {
         Id devId = Id.fromString("42");
         assertEquals(Long.valueOf(42), devId.getValue());
     }
