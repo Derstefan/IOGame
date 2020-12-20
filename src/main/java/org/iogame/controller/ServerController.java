@@ -1,5 +1,6 @@
 package org.iogame.controller;
 
+import org.iogame.core.Id;
 import org.iogame.main.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -29,7 +29,7 @@ public class ServerController {
     @RequestMapping("/newgame")
     public String createGame() {
         if(server.getGameNumbers()<maxGames) {
-            UUID id = server.createGame("game" + server.getGameNumbers());
+            Id id = server.createGame("game" + server.getGameNumbers());
             return "http://localhost:8080/game/map/planets/"+id.toString()+"";
         }else {
             return "";
@@ -39,7 +39,7 @@ public class ServerController {
     @RequestMapping("/gameids")
     public List<String> games() {
         List<String> list = new ArrayList<>();
-        for (UUID uuid:server.getGameUUIDs()) {
+        for (Id uuid:server.getGameIDs()) {
             list.add(uuid.toString());
         }
         return list;

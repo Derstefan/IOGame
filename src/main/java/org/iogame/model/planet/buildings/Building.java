@@ -1,6 +1,6 @@
 package org.iogame.model.planet.buildings;
 
-import org.iogame.model.GameObject;
+import org.iogame.core.GameObject;
 import org.iogame.model.data.EBuilding;
 import org.iogame.model.data.EResource;
 import org.iogame.model.planet.Planet;

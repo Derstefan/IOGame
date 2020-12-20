@@ -1,8 +1,8 @@
 package org.iogame.controller;
 
+import org.iogame.core.Id;
 import org.iogame.main.Server;
 import org.iogame.model.planet.Planet;
-import org.iogame.model.player.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,26 +22,14 @@ public class PlanetController {
 
     @RequestMapping("/planets")
     public List<Planet> getPlanets(@PathVariable String id) {
-        //for easy developing
-        if(id.equals("1")){
-            UUID uuid = server.getGameUUIDs().iterator().next();
-            id=uuid.toString();
-        }
-
-        List<Planet> planets = server.getGameById(UUID.fromString(id)).getPlanets();
+        List<Planet> planets = server.getGameById(Id.fromString(id)).getPlanets();
 
         return planets;
     }
 
     @RequestMapping("/planets/{planetId}")
     public Planet getPlanets(@PathVariable String id,@PathVariable String planetId) {
-        //for easy developing
-        if(id.equals("1")){
-            UUID uuid = server.getGameUUIDs().iterator().next();
-            id=uuid.toString();
-        }
-
-        Planet planet = server.getGameById(UUID.fromString(id)).getPlanets().get(Integer.valueOf(planetId));
+        Planet planet = server.getGameById(Id.fromString(id)).getPlanets().get(Integer.valueOf(planetId));
 
         return planet;
     }

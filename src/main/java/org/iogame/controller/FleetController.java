@@ -1,5 +1,6 @@
 package org.iogame.controller;
 
+import org.iogame.core.Id;
 import org.iogame.main.Server;
 import org.iogame.model.fleet.Fleet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,7 @@ public class FleetController {
 
     @RequestMapping("/fleets")
     public List<Fleet> getFleets(@PathVariable String id) {
-        //for easy developing
-        if(id.equals("1")){
-            UUID uuid = server.getGameUUIDs().iterator().next();
-            id=uuid.toString();
-        }
-        List<Fleet> fleets = server.getGameById(UUID.fromString(id)).getFleets();
+        List<Fleet> fleets = server.getGameById(Id.fromString(id)).getFleets();
         return fleets;
     }
 

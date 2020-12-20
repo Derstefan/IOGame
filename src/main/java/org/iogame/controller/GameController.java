@@ -1,5 +1,6 @@
 package org.iogame.controller;
 
+import org.iogame.core.Id;
 import org.iogame.main.Server;
 import org.iogame.model.player.Player;
 import org.iogame.model.player.Team;
@@ -22,23 +23,13 @@ public class GameController {
 
     @RequestMapping("/teams")
     public List<Team>  getTeams(@PathVariable String id) {
-        //for easy developing
-        if(id.equals("1")){
-            UUID uuid = server.getGameUUIDs().iterator().next();
-            id=uuid.toString();
-        }
-        List<Team> teams = server.getGameById(UUID.fromString(id)).getTeams();
+        List<Team> teams = server.getGameById(Id.fromString(id)).getTeams();
         return teams;
     }
 
     @RequestMapping("/players")
     public List<Player>  getPlayers(@PathVariable String id) {
-        //for easy developing
-        if(id.equals("1")){
-            UUID uuid = server.getGameUUIDs().iterator().next();
-            id=uuid.toString();
-        }
-        List<Player> players = server.getGameById(UUID.fromString(id)).getPlayers();
+        List<Player> players = server.getGameById(Id.fromString(id)).getPlayers();
         return players;
     }
 }

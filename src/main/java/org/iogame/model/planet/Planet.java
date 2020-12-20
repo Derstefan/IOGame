@@ -1,6 +1,6 @@
 package org.iogame.model.planet;
 
-import org.iogame.model.GameObject;
+import org.iogame.core.GameObject;
 import org.iogame.model.battle.Battle;
 import org.iogame.model.data.EBuilding;
 import org.iogame.model.fleet.Fleet;

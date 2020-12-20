@@ -1,6 +1,6 @@
 package org.iogame.model.battle;
 
-import org.iogame.model.GameObject;
+import org.iogame.core.GameObject;
 import org.iogame.model.planet.Planet;
 
 public class Battle extends GameObject {
