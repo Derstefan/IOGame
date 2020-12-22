@@ -1,8 +1,9 @@
 package org.iogame.model.battle;
 
+import org.iogame.core.GameObject;
 import org.iogame.model.planet.Planet;
 
-public class Battle {
+public class Battle extends GameObject {
     private Planet planet;
 
     public Battle(Planet planet) {
@@ -10,9 +11,16 @@ public class Battle {
         System.out.println("battle started");
     }
 
-
-    public void update(long delta){
+    @Override
+    public void update(long delta) {
 
     }
 
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
+    }
 }

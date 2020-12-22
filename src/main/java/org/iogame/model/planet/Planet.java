@@ -1,5 +1,6 @@
 package org.iogame.model.planet;
 
+import org.iogame.core.GameObject;
 import org.iogame.model.battle.Battle;
 import org.iogame.model.data.EBuilding;
 import org.iogame.model.fleet.Fleet;
@@ -9,7 +10,8 @@ import org.iogame.model.player.Team;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Planet {
+public class Planet extends GameObject {
+
     private double x;
     private double y;
     private ResourceDeposit resourceDeposit;
@@ -40,14 +42,18 @@ public class Planet {
         }
     }
 
+    @Override
     public void update(long delta) {
         buildingManager.update(delta);
         miningManager.update(delta);
+        if (getBattle() != null) {
+            //Battles
+            getBattle().update(delta);
+        }
     }
 
 
     public boolean checkPeace() {
-        System.out.println("checked");
         if (!fleets.isEmpty()) {
             Team t = fleets.get(0).getPlayer().getTeam();
             for (Fleet f : fleets) {

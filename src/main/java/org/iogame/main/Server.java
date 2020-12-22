@@ -1,7 +1,9 @@
 package org.iogame.main;
 
+import org.iogame.core.Id;
 import org.iogame.model.player.Player;
 import org.jetbrains.annotations.TestOnly;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -12,7 +14,7 @@ public final class Server {
         return server;
     }
 
-    private final Map<UUID, Game> games;
+    private final Map<Id, Game> games;
 
     private Server() {
         this.games = new HashMap<>();
@@ -24,18 +26,18 @@ public final class Server {
      *
      * @param name Name of the game instance
      */
-    public UUID createGame(String name) {
+    public Id createGame(String name) {
         Game game = new Game(name);
-        UUID uuid = UUID.randomUUID();
-        this.games.put(uuid, game);
+        Id id = Id.generateForClass(Game.class);
+        this.games.put(id, game);
         game.start();
-        return uuid;
+        return id;
     }
 
     /**
      * Adds a player to a running game.
      */
-    public void joinGame(Player player, UUID gameId) {
+    public void joinGame(Player player, Id gameId) {
         if (games.containsKey(gameId)) {
             getGameById(gameId).join(player);
         }
@@ -46,12 +48,21 @@ public final class Server {
         return this.games.values();
     }
 
-    public Game getGameById(UUID gameId) {
+    public Game getGameById(Id gameId) {
         return this.games.get(gameId);
     }
 
+    public int getGameNumbers(){
+        return games.size();
+    }
+
+    public Set<Id> getGameIDs(){
+        return games.keySet();
+    }
+
     @TestOnly
-    void clearGames() {
+    public void clearGames() {
         this.games.clear();
     }
+
 }

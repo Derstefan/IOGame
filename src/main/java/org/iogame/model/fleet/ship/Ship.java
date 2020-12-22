@@ -1,14 +1,14 @@
 package org.iogame.model.fleet.ship;
 
 import org.iogame.model.data.EResource;
-
+import org.iogame.core.GameObject;
 import org.iogame.model.fleet.ship.modules.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class Ship {
+public abstract class Ship extends GameObject {
     // general parameters
     private final String name;
     private final String id; // EBlueprint.getId()
@@ -59,4 +59,8 @@ public abstract class Ship {
         return returnList;
     }
 
+    @Override
+    public void update(long delta) {
+
+    }
 }
