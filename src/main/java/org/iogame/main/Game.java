@@ -2,6 +2,7 @@ package org.iogame.main;
 
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.fleet.Movement;
+import org.iogame.model.fleet.ship.BlueprintManager;
 import org.iogame.model.planet.Planet;
 import org.iogame.model.player.Player;
 import org.iogame.model.player.Team;
@@ -20,6 +21,7 @@ public class Game extends Thread {
     private List<Fleet> fleets = new ArrayList<>();
     private List<Player> players = new ArrayList<>();
     private List<Team> teams = new ArrayList<>();
+    private static final BlueprintManager blueprintManager = new BlueprintManager();
     //private List<Movement> movements = new ArrayList<>();
     //private List<Battle> battles = new ArrayList<>();
 
@@ -29,7 +31,6 @@ public class Game extends Thread {
 
     public Game(String name) {
         this.name = name;
-
         Team t1 = new Team("rot");
         Team t2 = new Team("blau");
 
@@ -120,4 +121,9 @@ public class Game extends Thread {
         return this.name;
     }
 
+    // Getter
+
+    public static BlueprintManager getBlueprintManager() {
+        return blueprintManager;
+    }
 }

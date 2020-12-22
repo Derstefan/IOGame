@@ -1,7 +1,7 @@
 package org.iogame.model.fleet.ship;
 
 import org.iogame.model.data.EResource;
-import org.iogame.model.data.dataModulesDelete;
+import org.iogame.model.data.dataModules;
 import org.iogame.model.fleet.ship.modules.*;
 
 import java.util.ArrayList;
@@ -70,7 +70,7 @@ public class Blueprint {
                 this.slot = module.getTotalSlot();
                 this.size = module.getQuantity();
                 // 2.2) Body Variables which scale according to function in data/dataModules
-                this.agility = dataModulesDelete.calculateAgility(((BodyMod) module).getAgility(), this.size);
+                this.agility = dataModules.calculateAgility(((BodyMod) module).getAgility(), this.size);
 
             // Special Modules
             } else if(module instanceof SpecialMod){
@@ -87,7 +87,7 @@ public class Blueprint {
             } else if(module instanceof AttackMod){
                 this.damage += ((AttackMod) module).getTotalDamage();
                 this.damageType.add(((AttackMod) module).getDamageType());
-                ((AttackMod) module).setAccuracy(dataModulesDelete.calculateAccuracy(
+                ((AttackMod) module).setAccuracy(dataModules.calculateAccuracy(
                         ((AttackMod) module).getBasicAccuracy(), this.agility));
 
             } else {
@@ -99,6 +99,10 @@ public class Blueprint {
 
 
     }
+
+    // Update Method, in case of new research or Commander boni, etc.
+    public void update(){};
+
     // Getter
     public List<GeneralModule> getModulesOfType(String type){
         List<GeneralModule> returnList = new ArrayList<>();
@@ -119,7 +123,6 @@ public class Blueprint {
         return returnList;
     }
 
-    // Getter
     public String getId() {
         return id;
     }
