@@ -28,10 +28,10 @@ public final class Server {
      */
     public Id createGame(String name) {
         Game game = new Game(name);
-        Id uuid = Id.generate();
-        this.games.put(uuid, game);
+        Id id = Id.generateForClass(Game.class);
+        this.games.put(id, game);
         game.start();
-        return uuid;
+        return id;
     }
 
     /**
@@ -53,7 +53,7 @@ public final class Server {
     }
 
     public int getGameNumbers(){
-        return  games.size();
+        return games.size();
     }
 
     public Set<Id> getGameIDs(){

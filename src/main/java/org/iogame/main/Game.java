@@ -152,4 +152,12 @@ public class Game extends Thread {
         }
         return battles;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "name='" + name + '\'' +
+                ", thread='" + getId() + '\'' +
+                '}';
+    }
 }

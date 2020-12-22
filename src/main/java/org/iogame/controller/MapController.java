@@ -28,7 +28,8 @@ public class MapController {
 
     @RequestMapping("/planets")
     public List<PlanetSync>  getPlanets(@PathVariable String id) {
-        Game game = server.getGameById(Id.fromString(id));
+        Id gameId = Id.fromString(id);
+        Game game = server.getGameById(gameId);
 
         List<PlanetSync> planets=new ArrayList<>();
         for (Planet p:game.getPlanets()) {
