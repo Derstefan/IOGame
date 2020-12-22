@@ -1,5 +1,7 @@
 package org.iogame.core;
 
+import org.jetbrains.annotations.TestOnly;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
@@ -38,7 +40,17 @@ public class Id {
     }
 
     @Override
+    public int hashCode() {
+        return Long.hashCode(id);
+    }
+
+    @Override
     public String toString() {
         return Long.toString(id);
+    }
+
+    @TestOnly
+    static void clear() {
+        LONG_ID_POOL.clear();
     }
 }
