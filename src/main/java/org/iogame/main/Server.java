@@ -61,9 +61,8 @@ public final class Server {
     }
 
     @TestOnly
-    void clearGames() {
+    public void clearGames() {
         this.games.clear();
     }
-
 
 }

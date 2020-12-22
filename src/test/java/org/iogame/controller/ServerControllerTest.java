@@ -1,5 +1,8 @@
 package org.iogame.controller;
 
+import org.iogame.core.BaseIdTest;
+import org.iogame.main.Server;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,10 +16,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class ServerControllerTest {
+class ServerControllerTest extends BaseIdTest {
 
     @Autowired
     private MockMvc mvc;
+
+    @Override
+    @AfterEach
+    public void tearDown() {
+        super.tearDown();
+        Server.getInstance().clearGames();
+    }
 
     @Test
     void shouldCreateNewGames() throws Exception {

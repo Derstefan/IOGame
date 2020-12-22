@@ -1,10 +1,12 @@
 package org.iogame.controller;
 
 import org.iogame.JsonHelper;
+import org.iogame.core.BaseIdTest;
 import org.iogame.core.Id;
 import org.iogame.main.Game;
 import org.iogame.main.Server;
 import org.iogame.sync.PlanetSync;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class MapControllerTest {
+class MapControllerTest extends BaseIdTest {
 
     @Autowired
     private MockMvc mvc;
@@ -32,6 +34,13 @@ class MapControllerTest {
     @BeforeAll
     static void setup() {
         gameId = Server.getInstance().createGame("test");
+    }
+
+    @Override
+    @AfterEach
+    public void tearDown() {
+        super.tearDown();
+        Server.getInstance().clearGames();
     }
 
     @Test

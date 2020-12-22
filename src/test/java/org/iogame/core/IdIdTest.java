@@ -9,14 +9,14 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class IdTest {
+class IdIdTest extends BaseIdTest {
 
     @Test
     void testFromString() {
         Id id = Id.fromString("42");
         assertEquals(Long.valueOf(42), id.getId());
 
-        Id generatedId = Id.generateForClass(IdTest.class);
+        Id generatedId = Id.generateForClass(IdIdTest.class);
         Id fromStringId = Id.fromString("0");
         assertEquals(generatedId, fromStringId);
     }
@@ -34,7 +34,7 @@ class IdTest {
 
     @Test
     void shouldBeEqualInImmutableMapGet() {
-        Id generatedId = Id.generateForClass(IdTest.class);
+        Id generatedId = Id.generateForClass(IdIdTest.class);
         Id fromStringId = Id.fromString("0");
         var map = Map.of(generatedId, "foo");
 
@@ -43,7 +43,7 @@ class IdTest {
 
     @Test
     void shouldBeEqualInHashMapGet() {
-        Id generatedId = Id.generateForClass(IdTest.class);
+        Id generatedId = Id.generateForClass(IdIdTest.class);
         Id fromStringId = Id.fromString("0");
         Map<Id, String> map = new HashMap<>();
         map.put(generatedId, "foo");
