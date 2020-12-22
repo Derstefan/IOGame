@@ -38,6 +38,11 @@ public class Id {
     }
 
     @Override
+    public int hashCode() {
+        return Long.hashCode(id);
+    }
+
+    @Override
     public String toString() {
         return Long.toString(id);
     }

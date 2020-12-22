@@ -1,38 +1,24 @@
 package org.iogame.core;
 
-import org.iogame.StaticSettings;
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.planet.Planet;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import static org.iogame.StaticSettings.ENV;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IdTest {
 
-    @BeforeEach
-    void setup() {
-        ENV = StaticSettings.Environment.DEVELOPMENT;
-    }
-
-    @Test
-    void shouldComputeEqualsBaseOnEnviroment() {
-        Id devId = Id.generate();
-        ENV = StaticSettings.Environment.PRODUCTION;
-        Id prodId = Id.generate();
-
-        assertNotEquals(prodId, devId);
-        assertEquals(devId, devId);
-        assertEquals(prodId, prodId);
-    }
-
     @Test
     void testFromString() {
-        Id devId = Id.fromString("42");
-        assertEquals(Long.valueOf(42), devId.getId());
+        Id id = Id.fromString("42");
+        assertEquals(Long.valueOf(42), id.getId());
+
+        Id generatedId = Id.generateForClass(IdTest.class);
+        Id fromStringId = Id.fromString("0");
+        assertEquals(generatedId, fromStringId);
     }
 
     @Test
@@ -41,17 +27,27 @@ class IdTest {
         Id planetId2 = Id.generateForClass(Planet.class);
         Id fleetId = Id.generateForClass(Fleet.class);
 
-        assertEquals(0L, planetId1.<Long>getId());
-        assertEquals(1L, planetId2.<Long>getId());
-        assertEquals(0L, fleetId.<Long>getId());
+        assertEquals(0L, planetId1.getId());
+        assertEquals(1L, planetId2.getId());
+        assertEquals(0L, fleetId.getId());
     }
 
     @Test
-    void shouldBeEqualInMapGet() {
-        Id id1 = new Id(42);
-        Id id2 = new Id(42);
-        Map<Id, String> map = Map.of(id1, "foo");
+    void shouldBeEqualInImmutableMapGet() {
+        Id generatedId = Id.generateForClass(IdTest.class);
+        Id fromStringId = Id.fromString("0");
+        var map = Map.of(generatedId, "foo");
 
-        assertEquals("foo", map.get(id2));
+        assertEquals("foo", map.get(fromStringId));
+    }
+
+    @Test
+    void shouldBeEqualInHashMapGet() {
+        Id generatedId = Id.generateForClass(IdTest.class);
+        Id fromStringId = Id.fromString("0");
+        Map<Id, String> map = new HashMap<>();
+        map.put(generatedId, "foo");
+
+        assertEquals("foo", map.get(fromStringId));
     }
 }
