@@ -4,6 +4,8 @@ import org.iogame.core.Id;
 import org.iogame.model.battle.Battle;
 import org.iogame.core.GameObject;
 import org.iogame.model.fleet.Fleet;
+import org.iogame.model.fleet.Movement;
+import org.iogame.model.map.MapGen;
 import org.iogame.model.planet.Planet;
 import org.iogame.model.player.Player;
 import org.iogame.model.player.Team;
@@ -23,6 +25,8 @@ public class Game extends Thread {
     private boolean stopped = false;
     private boolean paused = false;
 
+    public long seed_Game = new Random().nextLong();
+
     public Game(String name) {
         this.name = name;
         this.gameObjects = new HashMap<>();
@@ -32,6 +36,9 @@ public class Game extends Thread {
     }
 
     public void debug() {
+        MapGen mapGen = new MapGen();
+        mapGen.generate(seed_Game).forEach(this::addGameObject);
+
         Team t1 = new Team("rot");
         Team t2 = new Team("blau");
         teams.add(t1);
