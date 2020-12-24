@@ -37,7 +37,7 @@ public class Game extends Thread {
 
     public void debug() {
         MapGen mapGen = new MapGen();
-        planets = mapGen.generate(seed_Game);
+        mapGen.generate(seed_Game).forEach(this::addGameObject);
 
         Team t1 = new Team("rot");
         Team t2 = new Team("blau");
