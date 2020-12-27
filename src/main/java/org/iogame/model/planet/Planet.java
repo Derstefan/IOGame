@@ -12,8 +12,6 @@ import java.util.List;
 
 public class Planet extends GameObject {
 
-    private double x;
-    private double y;
     private ResourceDeposit resourceDeposit;
     private Storage storage;
     private BuildingManager buildingManager;
@@ -26,11 +24,10 @@ public class Planet extends GameObject {
     private Battle battle = null;
 
     // fleets on/around this planet
-    private List<Fleet> fleets = new ArrayList<>();
+    private final List<Fleet> fleets = new ArrayList<>();
 
     public Planet(double x, double y) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.resourceDeposit = new ResourceDeposit();
         this.storage = new Storage();
         this.buildingManager = new BuildingManager(storage, this);
@@ -77,14 +74,6 @@ public class Planet extends GameObject {
 
 
     // Getter Setter
-
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
 
     public List<Fleet> getFleets() {
         return fleets;
