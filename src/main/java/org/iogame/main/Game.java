@@ -1,10 +1,10 @@
 package org.iogame.main;
 
+import org.iogame.StaticSettings;
+import org.iogame.core.GameObject;
 import org.iogame.core.Id;
 import org.iogame.model.battle.Battle;
-import org.iogame.core.GameObject;
 import org.iogame.model.fleet.Fleet;
-import org.iogame.model.fleet.Movement;
 import org.iogame.model.map.MapGen;
 import org.iogame.model.planet.Planet;
 import org.iogame.model.player.Player;
@@ -12,9 +12,12 @@ import org.iogame.model.player.Team;
 
 import java.util.*;
 
+import static org.iogame.StaticSettings.ENV;
+
 public class Game extends Thread {
 
     private static final int MAX_PLAYERS = 5;
+
     private final String name;
 
     private final Map<Class<? extends GameObject>, Map<Id, GameObject>> gameObjects;
@@ -32,7 +35,8 @@ public class Game extends Thread {
         this.gameObjects = new HashMap<>();
         this.players = new LinkedList<>();
         this.teams = new LinkedList<>();
-        debug();
+
+        if (ENV == StaticSettings.Environment.DEVELOPMENT) debug();
     }
 
     public void debug() {
