@@ -1,5 +1,9 @@
 package org.iogame.core;
 
+import org.iogame.model.player.Player;
+
+import java.util.Optional;
+
 public abstract class GameObject {
 
     private final Id id;
@@ -7,6 +11,8 @@ public abstract class GameObject {
 
     protected double x;
     protected double y;
+
+    protected Optional<Player> owner;
 
     public GameObject() {
         this(0.0D, 0.0D);
@@ -19,6 +25,8 @@ public abstract class GameObject {
 
         this.x = x;
         this.y = y;
+
+        this.owner = Optional.empty();
     }
 
     public Id getId() {
@@ -36,6 +44,18 @@ public abstract class GameObject {
 
     public double getY() {
         return this.y;
+    }
+
+    public Optional<Player> getOwner() {
+        return this.owner;
+    }
+
+    public void setOwner(Player player) {
+        this.owner = Optional.of(player);
+    }
+
+    public boolean isOwnedBy(Player player) {
+        return this.owner.map(owner -> owner.equals(player)).orElse(false);
     }
 
     public abstract void update(long delta);
