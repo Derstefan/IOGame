@@ -10,15 +10,9 @@ public class LithiumMine extends Building{
     }
 
     @Override
-    public void updateBuilding(Planet planet) {
-        double rate = planet.getMiningManager().getMiningRate().get(EResource.LITHIUM);
-        planet.getMiningManager().getMiningRate().put(EResource.LITHIUM,rate + 10*this.getLvl());
-    }
-
-    @Override
-    public void destroyBuilding(Planet planet) {
-        double rate = planet.getMiningManager().getMiningRate().get(EResource.LITHIUM);
-        planet.getMiningManager().getMiningRate().put(EResource.LITHIUM,rate - 10*(this.getLvl()+1));
+    public void updateValues(Planet planet) {
+        //getLvl();
+//        planet.getMiningManager().set
     }
 
     @Override

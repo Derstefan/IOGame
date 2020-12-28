@@ -32,8 +32,10 @@ public class MapController {
         Game game = server.getGameById(gameId);
 
         List<PlanetSync> planets=new ArrayList<>();
-        for (Planet p:game.getPlanets()) {
-            planets.add(new PlanetSync(p));
+        if(game!=null) {
+            for (Planet p : game.getPlanets()) {
+                planets.add(new PlanetSync(p));
+            }
         }
         return planets;
     }
@@ -43,8 +45,10 @@ public class MapController {
         Game game = server.getGameById(Id.fromString(id));
 
         List<FleetSync> fleets =new ArrayList<>();
-        for (Fleet f:game.getFleets()) {
-            fleets.add(new FleetSync(f));
+        if(game!=null) {
+            for (Fleet f : game.getFleets()) {
+                fleets.add(new FleetSync(f));
+            }
         }
         return fleets;
     }
@@ -54,8 +58,10 @@ public class MapController {
         Game game = server.getGameById(Id.fromString(id));
 
         List<BattleSync> battles =new ArrayList<>();
-        for (Battle b:game.getBattles()) {
-            battles.add(new BattleSync(b));
+        if(game!=null) {
+            for (Battle b : game.getBattles()) {
+                battles.add(new BattleSync(b));
+            }
         }
         return battles;
     }

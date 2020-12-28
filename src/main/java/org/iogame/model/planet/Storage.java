@@ -10,7 +10,7 @@ public class Storage {
 
     public Storage() {
         for (EResource r : EResource.values()) {
-            stock.put(r, 0.0);
+            stock.put(r, 2.0);
         }
         for (EResource r : EResource.values()) {
             cap.put(r, 100.0);//TODO: Lookup vars
@@ -54,11 +54,22 @@ public class Storage {
     }
 
     public boolean removeResources(HashMap<EResource, Double> costs) {
+        if(hasEnouthResources(costs)){
+            for (EResource r : EResource.values()) {
+                removeResource(r, costs.get(r));
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasEnouthResources(HashMap<EResource, Double> costs){
         for (EResource r : EResource.values()) {
-            if (removeResource(r, costs.get(r))) {
+            if(costs.get(r) > stock.get(r)){
                 return false;
             }
         }
         return true;
     }
+
 }
