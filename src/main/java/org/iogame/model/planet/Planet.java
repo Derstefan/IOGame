@@ -1,6 +1,7 @@
 package org.iogame.model.planet;
 
 import org.iogame.core.GameObject;
+import org.iogame.exceptions.NotBuildableException;
 import org.iogame.model.battle.Battle;
 import org.iogame.model.data.EBuilding;
 import org.iogame.model.fleet.Fleet;
@@ -49,6 +50,18 @@ public class Planet extends GameObject {
         }
     }
 
+    public void build(EBuilding BuildingType) throws NotBuildableException{
+        buildingManager.startBuild(BuildingType);
+    }
+
+    public void cancelBuilding(int queueIndex){
+        buildingManager.cancel(queueIndex);
+    }
+
+
+    public void updateStats(){
+        //TODO: update mining rate, caps, availabilitys,... from buildings and researchs
+    }
 
     public boolean checkPeace() {
         if (!fleets.isEmpty()) {
@@ -64,13 +77,13 @@ public class Planet extends GameObject {
     }
 
 
-    public boolean buildBuilding(EBuilding BuildingType) {
-        return buildingManager.startBuild(BuildingType);
-    }
 
-    public boolean destroyBuilding(EBuilding BuildingType) {
+
+
+    /*public boolean destroyBuilding(EBuilding BuildingType) {
         return buildingManager.destroy(BuildingType);
-    }
+    }*/
+
 
 
     // Getter Setter
