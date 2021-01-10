@@ -3,10 +3,11 @@ package org.iogame.model.planet;
 import org.iogame.core.GameObject;
 import org.iogame.exceptions.NotBuildableException;
 import org.iogame.model.battle.Battle;
-import org.iogame.model.data.EBuilding;
+import org.iogame.model.planet.buildings.EBuilding;
 import org.iogame.model.fleet.Fleet;
-import org.iogame.model.player.Player;
 import org.iogame.model.player.Team;
+import org.iogame.model.research.ETech;
+import org.iogame.model.research.TechManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,6 @@ public class Planet extends GameObject {
     private Storage storage;
     private BuildingManager buildingManager;
     private MiningManager miningManager;
-
-    // controlled player, null if its no one
-    private Player player;
 
 
     private Battle battle = null;
@@ -49,7 +47,7 @@ public class Planet extends GameObject {
             getBattle().update(delta);
         }
     }
-
+    // Player Actions -----------------------------------------------------------------
     public void build(EBuilding BuildingType) throws NotBuildableException{
         buildingManager.startBuild(BuildingType);
     }
@@ -59,8 +57,28 @@ public class Planet extends GameObject {
     }
 
 
+
+
+
+    /*
+    Sets all available buildings/ships/techs, building boni, etc
+     */
     public void updateStats(){
-        //TODO: update mining rate, caps, availabilitys,... from buildings and researchs
+        buildingManager.resetStats();
+        miningManager.resetStats();
+        storage.resetStats();
+
+        for(EBuilding b: buildingManager.getBuildings().keySet()){
+            buildingManager.getBuildings().get(b).activate(this);
+        }
+        buildingManager.updateAvailableBuildings(getTechs());
+    }
+
+    private List<ETech> getTechs(){
+        if(!getOwner().isEmpty()){
+            return getOwner().get().getTechManager().getdevelopedTech();
+        }
+        return new ArrayList<ETech>();
     }
 
     public boolean checkPeace() {
@@ -122,14 +140,6 @@ public class Planet extends GameObject {
 
     public void setMiningManager(MiningManager miningManager) {
         this.miningManager = miningManager;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public Battle getBattle() {
