@@ -38,10 +38,10 @@ public abstract class dataModules {
         switch(emodule){
             // all body modules
             case BODY1:
-                cost.put(EResource.RES1, 1.0);
-                cost.put(EResource.RES2, 2.0);
-                cost.put(EResource.RES3, 3.0);
-                cost.put(EResource.LITHIUM, 4.0);
+                cost.put(EResource.CLASTER, 1.0);
+                cost.put(EResource.SEVIT, 2.0);
+                cost.put(EResource.NEDRIL, 3.0);
+                cost.put(EResource.JIVANA, 4.0);
                 duration = 10.0;
                 slot = 2;
                 agility = 1.0;
@@ -50,10 +50,10 @@ public abstract class dataModules {
 
             // all special modules
             case CARGO:
-                cost.put(EResource.RES1, 1.0);
-                cost.put(EResource.RES2, 2.0);
-                cost.put(EResource.RES3, 3.0);
-                cost.put(EResource.LITHIUM, 4.0);
+                cost.put(EResource.CLASTER, 1.0);
+                cost.put(EResource.SEVIT, 2.0);
+                cost.put(EResource.NEDRIL, 3.0);
+                cost.put(EResource.JIVANA, 4.0);
                 slot = 1;
                 duration = 10.0;
                 cargoVolume = 1000.0;
@@ -63,10 +63,10 @@ public abstract class dataModules {
 
             // all defense modules
             case TURTLESHIELD:
-                cost.put(EResource.RES1, 1.0);
-                cost.put(EResource.RES2, 2.0);
-                cost.put(EResource.RES3, 3.0);
-                cost.put(EResource.LITHIUM, 4.0);
+                cost.put(EResource.CLASTER, 1.0);
+                cost.put(EResource.SEVIT, 2.0);
+                cost.put(EResource.NEDRIL, 3.0);
+                cost.put(EResource.JIVANA, 4.0);
                 slot = 1;
                 duration = 10.0;
                 defenseType = "shield";
@@ -79,10 +79,10 @@ public abstract class dataModules {
 
             // all weapon modules
             case RAPIDRAY:
-                cost.put(EResource.RES1, 1.0);
-                cost.put(EResource.RES2, 2.0);
-                cost.put(EResource.RES3, 3.0);
-                cost.put(EResource.LITHIUM, 4.0);
+                cost.put(EResource.CLASTER, 1.0);
+                cost.put(EResource.SEVIT, 2.0);
+                cost.put(EResource.NEDRIL, 3.0);
+                cost.put(EResource.JIVANA, 4.0);
                 slot = 1;
                 duration = 10.0;
                 attackType = "armor";

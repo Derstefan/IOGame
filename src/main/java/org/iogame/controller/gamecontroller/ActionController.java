@@ -4,7 +4,7 @@ import org.iogame.core.Id;
 import org.iogame.exceptions.NotBuildableException;
 import org.iogame.main.Game;
 import org.iogame.main.Server;
-import org.iogame.model.data.EBuilding;
+import org.iogame.model.planet.buildings.EBuilding;
 import org.iogame.model.data.EResource;
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.planet.Planet;
@@ -62,7 +62,7 @@ public class ActionController {
             return new ResponseEntity<>("Player isn't valid.",HttpStatus.FORBIDDEN);
         }
         Planet planet = game.getPlanetById(Id.fromString(planetId));
-        if(planet.getPlayer()!=player){
+        if(planet.getOwner().equals(player)){
             return new ResponseEntity<>("It's not players planet.",HttpStatus.FORBIDDEN);
         }
 
@@ -89,7 +89,7 @@ public class ActionController {
             return new ResponseEntity<>("Player isn't valid.",HttpStatus.FORBIDDEN);
         }
         Planet planet = game.getPlanetById(Id.fromString(planetId));
-        if(planet.getPlayer()!=player){
+        if(planet.getOwner().equals(player)){
             return new ResponseEntity<>("It's not players planet.",HttpStatus.FORBIDDEN);
         }
 

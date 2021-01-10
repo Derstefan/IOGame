@@ -6,15 +6,38 @@ import java.util.HashMap;
 
 public class Storage {
     private HashMap<EResource, Double> stock = new HashMap<>();
+
+    /**
+     * cap=startCap + buildingAmount*bouldingBoost*techBoost
+     */
     private HashMap<EResource, Double> cap = new HashMap<>();
 
+    private HashMap<EResource,Double> startCap = new HashMap<>();
+    private HashMap<EResource,Double> amount = new HashMap<>();
+    private HashMap<EResource,Double> buildingBoost = new HashMap<>();
+    private HashMap<EResource,Double> techBoost = new HashMap<>();
+
     public Storage() {
+
+        init();
+    }
+    private void init(){
         for (EResource r : EResource.values()) {
-            stock.put(r, 2.0);
+            stock.put(r, 80.0);
         }
+        resetStats();
+    }
+
+    public void resetStats(){
         for (EResource r : EResource.values()) {
-            cap.put(r, 100.0);//TODO: Lookup vars
+            cap.put(r, 0.0);//TODO: Lookup vars
+
+            startCap.put(r,100.0);
+            amount.put(r,0.0);
+            buildingBoost.put(r,1.0);
+            techBoost.put(r,1.0);
         }
+        computeCap();
     }
 
     public double getResource(EResource type) {
@@ -70,6 +93,41 @@ public class Storage {
             }
         }
         return true;
+    }
+
+
+    public void addAmount(HashMap<EResource, Double> amount) {
+        for (EResource r : EResource.values()) {
+            amount.put(r,amount.get(r)+amount.get(r));
+        }
+        computeCap();
+    }
+
+    public void addBuildingBoost(HashMap<EResource, Double> amount) {
+        for (EResource r : EResource.values()) {
+            buildingBoost.put(r,buildingBoost.get(r)+amount.get(r));
+        }
+        computeCap();
+    }
+
+    public void addResearchBoost(HashMap<EResource, Double> amount) {
+        for (EResource r : EResource.values()) {
+            techBoost.put(r, techBoost.get(r)+amount.get(r));
+        }
+        computeCap();
+    }
+    private void computeCap(){
+        for (EResource r : EResource.values()) {
+            cap.put(r, startCap.get(r)+ amount.get(r)*buildingBoost.get(r)* techBoost.get(r));
+        }
+    }
+
+    public String stockToString(){
+        String s = "Res:";
+        for (EResource r : EResource.values()) {
+            s+= r + " : " + stock.get(r) + " ";
+        }
+        return s+"\n";
     }
 
 }

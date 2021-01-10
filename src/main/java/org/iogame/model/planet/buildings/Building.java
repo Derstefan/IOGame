@@ -1,11 +1,11 @@
 package org.iogame.model.planet.buildings;
 
 import org.iogame.core.GameObject;
-import org.iogame.model.data.EBuilding;
-import org.iogame.model.data.EResource;
 import org.iogame.model.planet.Planet;
-
-import java.util.HashMap;
+import org.iogame.model.planet.buildings.mines.*;
+import org.iogame.model.planet.buildings.storages.ClasterStorage;
+import org.iogame.model.planet.buildings.storages.NedrilStorage;
+import org.iogame.model.planet.buildings.storages.SevitStorage;
 
 public abstract class Building extends GameObject {
     private final EBuilding type;
@@ -21,30 +21,19 @@ public abstract class Building extends GameObject {
         return type;
     }
 
-    public void lvlUp(Planet planet) {
+    public void lvlUp() {
         lvl++;
-        planet.updateStats();
     }
 
-    public void lvlDown(Planet planet) {
+    public void lvlDown() {
         lvl--;
-        planet.updateStats();
     }
 
     public int getLvl() {
         return lvl;
     }
 
-    public abstract void updateValues(Planet planet);
-
-    public static Building getInstance(EBuilding type){
-        if(type.equals(EBuilding.LITHIUMMINE)){
-            return new LithiumMine();
-        } else {
-            return null;
-        }
-
-    }
+    public abstract void activate(Planet planet);
 
 
     @Override

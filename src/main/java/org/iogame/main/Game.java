@@ -80,7 +80,7 @@ public class Game extends Thread {
     }
 
     /**
-     * Update method with delta as time difference (in s) to last call.
+     * Update method with delta as time difference (in ms) to last call.
      * This method will be called for every frame in the main loop.
      */
     public void update(long delta) {
