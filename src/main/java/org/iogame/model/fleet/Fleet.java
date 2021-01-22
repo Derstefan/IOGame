@@ -10,8 +10,6 @@ import org.iogame.model.player.Player;
 
 public class Fleet extends GameObject {
 
-    private double x;
-    private double y;
     private double dx;
     private double dy;
     private double speed;
@@ -24,8 +22,7 @@ public class Fleet extends GameObject {
     private Player player;
 
     public Fleet(double speed, Planet location, Player player) {
-        this.x = location.getX();
-        this.y = location.getY();
+        super(location.getX(), location.getY());
         this.speed = speed;
         this.location = location;
         this.player = player;
@@ -59,14 +56,6 @@ public class Fleet extends GameObject {
         }
         movement = null;
 
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
     }
 
     public double getDx() {
@@ -118,6 +107,4 @@ public class Fleet extends GameObject {
         return Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
 
     }
-
-
 }

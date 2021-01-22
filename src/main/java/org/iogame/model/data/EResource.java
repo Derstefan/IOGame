@@ -1,8 +1,25 @@
 package org.iogame.model.data;
 
+
+import java.util.HashMap;
+
 public enum EResource {
-    RES1,
-    RES2,
-    RES3,
-    LITHIUM
+    // Std Res
+    CLASTER,
+    SEVIT,
+    NEDRIL,
+    // Rare Res
+    ONAMA,
+    JIVANA,
+    APOGHYT;
+
+
+
+    public static HashMap<EResource,Double> emptyContainer(){
+        HashMap<EResource,Double> container = new HashMap<>();
+        for(EResource r: EResource.values()){
+            container.put(r,0.0);
+        }
+        return container;
+    }
 }

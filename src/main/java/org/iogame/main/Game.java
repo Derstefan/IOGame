@@ -1,19 +1,24 @@
 package org.iogame.main;
 
+import org.iogame.StaticSettings;
+import org.iogame.core.GameObject;
 import org.iogame.core.Id;
 import org.iogame.model.battle.Battle;
-import org.iogame.core.GameObject;
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.fleet.ship.BlueprintManager;
+import org.iogame.model.map.MapGen;
 import org.iogame.model.planet.Planet;
 import org.iogame.model.player.Player;
 import org.iogame.model.player.Team;
 
 import java.util.*;
 
+import static org.iogame.StaticSettings.ENV;
+
 public class Game extends Thread {
 
     private static final int MAX_PLAYERS = 5;
+
     private final String name;
 
     private final Map<Class<? extends GameObject>, Map<Id, GameObject>> gameObjects;
@@ -25,17 +30,21 @@ public class Game extends Thread {
     private boolean stopped = false;
     private boolean paused = false;
 
+    public long seed_Game = new Random().nextLong();
+
     public Game(String name) {
         this.name = name;
         this.gameObjects = new HashMap<>();
         this.players = new LinkedList<>();
         this.teams = new LinkedList<>();
-        debug();
+
+        if (ENV == StaticSettings.Environment.DEVELOPMENT) debug();
     }
 
 
     public void debug() {
-
+        MapGen mapGen = new MapGen();
+        mapGen.generate(seed_Game).forEach(this::addGameObject);
         Team t1 = new Team("rot");
         Team t2 = new Team("blau");
         teams.add(t1);
@@ -73,7 +82,7 @@ public class Game extends Thread {
     }
 
     /**
-     * Update method with delta as time difference (in s) to last call.
+     * Update method with delta as time difference (in ms) to last call.
      * This method will be called for every frame in the main loop.
      */
     public void update(long delta) {
