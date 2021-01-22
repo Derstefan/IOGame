@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class Ship extends GameObject {
     // general parameters
     private final String name;
-    private final String id; // EBlueprint.getId()
+    private final Blueprint blueprint; // TODO: maybe just use EBlueprint.getId() as an id and not the whole object
     private HashMap<EResource, Double> cost;
     private double buildingTime;
     // body properties
@@ -37,7 +37,7 @@ public abstract class Ship extends GameObject {
     //  are the the IDENTICAL objects or a copy therof?!
     public Ship(String name, Blueprint blueprint){
         this.name = name;
-        this.id = blueprint.getId();
+        this.blueprint = blueprint;
     }
     // Getter
     public List<GeneralModule> getModulesOfType(String type){

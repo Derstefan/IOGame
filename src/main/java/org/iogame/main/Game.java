@@ -20,7 +20,7 @@ public class Game extends Thread {
 
     private final List<Player> players;
     private final List<Team> teams;
-    private static final BlueprintManager blueprintManager = new BlueprintManager();
+    private final BlueprintManager blueprintManager = new BlueprintManager();
 
     private boolean stopped = false;
     private boolean paused = false;
@@ -44,8 +44,8 @@ public class Game extends Thread {
         Player tilman = new Player("tilman",t1);
         Player gerardo = new Player("gerardo",t2);
 
-        Planet p1 = createPlanet(4.0, 7.0);
-        Planet p2 = createPlanet(2.0, 6.0);
+        Planet p1 = createPlanet(4.0, 7.0, this.blueprintManager);
+        Planet p2 = createPlanet(2.0, 6.0, this.blueprintManager);
 
         Fleet f1 = createFleet(0.001, p1, tilman);
         Fleet f2 = createFleet(0.001, p2, gerardo);
@@ -100,8 +100,8 @@ public class Game extends Thread {
     }
 
 
-    public Planet createPlanet(double x, double y) {
-        Planet planet = new Planet(x, y);
+    public Planet createPlanet(double x, double y, BlueprintManager blueprintManager) {
+        Planet planet = new Planet(x, y, blueprintManager);
         addGameObject(planet);
         return planet;
     }
@@ -134,7 +134,7 @@ public class Game extends Thread {
         return teams;
     }
 
-    public static BlueprintManager getBlueprintManager() {
+    public BlueprintManager getBlueprintManager() {
         return blueprintManager;
     }
 

@@ -8,8 +8,6 @@ import java.util.HashMap;
 public class BlueprintManager {
     private final HashMap<EBlueprint, Blueprint> blueprints;
 
-
-
     public BlueprintManager() {
         this.blueprints = dataBlueprints.instantiateAllBlueprints();
     }

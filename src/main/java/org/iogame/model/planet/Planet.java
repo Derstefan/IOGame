@@ -2,8 +2,11 @@ package org.iogame.model.planet;
 
 import org.iogame.core.GameObject;
 import org.iogame.model.battle.Battle;
+import org.iogame.model.data.EBlueprint;
 import org.iogame.model.data.EBuilding;
 import org.iogame.model.fleet.Fleet;
+import org.iogame.model.fleet.ship.BlueprintManager;
+import org.iogame.model.fleet.ship.ShipBuilder;
 import org.iogame.model.player.Player;
 import org.iogame.model.player.Team;
 
@@ -18,6 +21,7 @@ public class Planet extends GameObject {
     private Storage storage;
     private BuildingManager buildingManager;
     private MiningManager miningManager;
+    private ShipBuilder shipBuilder;
 
     // controlled player, null if its no one
     private Player player;
@@ -28,13 +32,14 @@ public class Planet extends GameObject {
     // fleets on/around this planet
     private List<Fleet> fleets = new ArrayList<>();
 
-    public Planet(double x, double y) {
+    public Planet(double x, double y, BlueprintManager blueprintManager) {
         this.x = x;
         this.y = y;
         this.resourceDeposit = new ResourceDeposit();
         this.storage = new Storage();
         this.buildingManager = new BuildingManager(storage, this);
         this.miningManager = new MiningManager(resourceDeposit, storage);
+        this.shipBuilder = new ShipBuilder(blueprintManager.getBlueprints(), this);
         if(checkPeace()){
             battle = null;
         } else {
@@ -66,7 +71,6 @@ public class Planet extends GameObject {
         return true;
     }
 
-
     public boolean buildBuilding(EBuilding BuildingType) {
         return buildingManager.startBuild(BuildingType);
     }
@@ -74,6 +78,12 @@ public class Planet extends GameObject {
     public boolean destroyBuilding(EBuilding BuildingType) {
         return buildingManager.destroy(BuildingType);
     }
+
+    public boolean buildShip(EBlueprint eBlueprint){
+        return false;
+    }
+
+
 
 
     // Getter Setter

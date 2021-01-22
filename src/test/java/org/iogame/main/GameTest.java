@@ -7,8 +7,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class GameTest {
@@ -29,8 +27,8 @@ class GameTest {
     @Test
     void shouldCreateAndGetGameObjects() {
         Player player = new Player("p1", null);
-        Planet planet1 = game.createPlanet(1.0D, 2.0D);
-        Planet planet2 = game.createPlanet(5.0D, 7.0D);
+        Planet planet1 = game.createPlanet(1.0D, 2.0D, game.getBlueprintManager());
+        Planet planet2 = game.createPlanet(5.0D, 7.0D, game.getBlueprintManager());
 
         Fleet fleet1 = game.createFleet(1.0D, planet1, player);
         Fleet fleet2 = game.createFleet(2.0D, planet2, player);
