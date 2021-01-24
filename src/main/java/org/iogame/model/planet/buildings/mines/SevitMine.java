@@ -16,8 +16,8 @@ public class SevitMine extends Building {
     public void activate(Planet planet) {
         int lvl = getLvl();
         HashMap<EResource,Double> additionalAmount = EResource.emptyContainer();
-        additionalAmount.put(EResource.SEVIT,3.0);
-        additionalAmount.put(EResource.NEDRIL,1.2);
+        additionalAmount.put(EResource.SEVIT,3.0*lvl);
+        additionalAmount.put(EResource.NEDRIL,0.6*lvl);
         planet.getMiningManager().addMiningAmount(additionalAmount);
     }
 
