@@ -28,16 +28,18 @@ public class Player {
     }
 
 
-
+    // Add tech to developped Techs
     public void develop(ETech tech){
-        techManager.develop(tech);
-        for (Planet p: controlledPlanets){
-            p.updateStats();
+
+        if(techManager.develop(tech)) {
+            // execute techfunctions
+            tech.activate(this);
+            //update buildingStats
+            for (Planet p : controlledPlanets) {
+                p.updateBuildingStats();
+            }
         }
     }
-
-
-
 
 
     public String getName() {
@@ -54,6 +56,10 @@ public class Player {
 
     public void setTechManager(TechManager techManager) {
         this.techManager = techManager;
+    }
+
+    public List<Planet> getControlledPlanets() {
+        return controlledPlanets;
     }
 
     @Override

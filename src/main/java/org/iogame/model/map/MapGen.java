@@ -10,7 +10,7 @@ import java.util.Vector;
 public class MapGen {
     private static final int height = 100;
     private static final int width = 200;
-    private static final int maxPlanet = 5;
+    private static final int maxPlanet = 15;
     private static final int minPlanet = 4;
     private static final int orbit = 5;
     private long numberPlanets;

@@ -5,7 +5,6 @@ import org.iogame.model.planet.buildings.EBuilding;
 import org.iogame.model.data.EResource;
 import org.iogame.model.planet.buildings.Building;
 import org.iogame.model.research.ETech;
-import org.iogame.model.research.TechManager;
 
 import java.util.*;
 
@@ -39,12 +38,7 @@ public class BuildingManager {
         this.availableBuildings = new HashSet<>();
         this.storage = storage;
         this.planet = planet;
-        for (EBuilding type : EBuilding.values()) {
-            //only planetdepending avilable buildings (no omama -> no omamaMine) ?
-            buildings.put(type, type.getInstance());
-        }
         init();
-
     }
 
     private void init(){
@@ -55,14 +49,18 @@ public class BuildingManager {
             //only planetdepending avilable buildings (no omama -> no omamaMine) ?
             buildings.put(type, type.getInstance());
         }
-        resetStats();
+        resetBuildingStats();
+        resetTechStats();
     }
 
-    public void resetStats() {
-        speed = 1.0;
+    public void resetBuildingStats() {
         buildingBoost = 0.0;
+    }
+
+    public void resetTechStats() {
         techBoost = 0.0;
     }
+
 
 
     public void update(long delta) {
@@ -124,7 +122,7 @@ public class BuildingManager {
     private void build(EBuilding type) {
         Building b = buildings.get(type);
         b.lvlUp();
-        planet.updateStats();
+        planet.updateBuildingStats();
         buildingQueue.remove(0);
     }
 
@@ -134,7 +132,7 @@ public class BuildingManager {
         Building b = buildings.get(type);
         if (b.getLvl() > 0) {
             b.lvlDown();
-            planet.updateStats();
+            planet.updateBuildingStats();
             return true;
         }
         return false;

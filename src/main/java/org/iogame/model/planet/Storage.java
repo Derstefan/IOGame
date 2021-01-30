@@ -12,10 +12,10 @@ public class Storage {
      */
     private HashMap<EResource, Double> cap = new HashMap<>();
 
-    private HashMap<EResource,Double> startCap = new HashMap<>();
-    private HashMap<EResource,Double> amount = new HashMap<>();
-    private HashMap<EResource,Double> buildingBoost = new HashMap<>();
-    private HashMap<EResource,Double> techBoost = new HashMap<>();
+    private HashMap<EResource,Double> startCap = EResource.emptyContainer();
+    private HashMap<EResource,Double> amount = EResource.emptyContainer();
+    private HashMap<EResource,Double> buildingBoost = EResource.emptyContainer();
+    private HashMap<EResource,Double> techBoost = EResource.emptyContainer();
 
     public Storage() {
 
@@ -25,16 +25,24 @@ public class Storage {
         for (EResource r : EResource.values()) {
             stock.put(r, 80.0);
         }
-        resetStats();
+        resetBuildingStats();
+        resetTechStats();
+
     }
 
-    public void resetStats(){
+    public void resetBuildingStats(){
         for (EResource r : EResource.values()) {
             cap.put(r, 0.0);//TODO: Lookup vars
 
             startCap.put(r,100.0);
             amount.put(r,0.0);
             buildingBoost.put(r,1.0);
+        }
+        computeCap();
+    }
+
+    public void resetTechStats(){
+        for (EResource r : EResource.values()) {
             techBoost.put(r,1.0);
         }
         computeCap();

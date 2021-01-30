@@ -7,7 +7,6 @@ import org.iogame.model.planet.buildings.EBuilding;
 import org.iogame.model.fleet.Fleet;
 import org.iogame.model.player.Team;
 import org.iogame.model.research.ETech;
-import org.iogame.model.research.TechManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,20 +58,26 @@ public class Planet extends GameObject {
 
 
 
-
     /*
-    Sets all available buildings/ships/techs, building boni, etc
+    Sets all available buildings/ships, building boni, etc
      */
-    public void updateStats(){
-        buildingManager.resetStats();
-        miningManager.resetStats();
-        storage.resetStats();
+    public void updateBuildingStats(){
+        buildingManager.resetBuildingStats();
+        miningManager.resetBuildingStats();
+        storage.resetBuildingStats();
 
         for(EBuilding b: buildingManager.getBuildings().keySet()){
             buildingManager.getBuildings().get(b).activate(this);
         }
         buildingManager.updateAvailableBuildings(getTechs());
     }
+
+    public void resetTechStats(){
+        getBuildingManager().resetTechStats();
+        getMiningManager().resetTechStats();
+        getStorage().resetTechStats();
+    }
+
 
     private List<ETech> getTechs(){
         if(!getOwner().isEmpty()){

@@ -37,8 +37,6 @@ class PlanetTest {
         System.out.println("after: " + planet.getStorage().stockToString());
         assertEquals(0,planet.getBuildingManager().getBuildingQueue().size());
         assertEquals(1,planet.getBuildingManager().getLvlOf(EBuilding.CLASTER_MINE));
-
-
     }
 
     @Test

@@ -16,9 +16,8 @@ public class ClasterStorage extends Building {
     public void activate(Planet planet) {
         int lvl = getLvl();
         HashMap<EResource,Double> additionalAmount = EResource.emptyContainer();
-        additionalAmount.put(EResource.SEVIT,3.0);
-        additionalAmount.put(EResource.NEDRIL,1.2);
-        planet.getMiningManager().addMiningAmount(additionalAmount);
+        additionalAmount.put(EResource.CLASTER,100.0*lvl);
+        planet.getStorage().addAmount(additionalAmount);
     }
 
     @Override

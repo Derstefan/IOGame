@@ -16,10 +16,14 @@ public class MiningManager {
      */
     private final HashMap<EResource, Double> miningRate = new HashMap<EResource, Double>();
 
-    private final HashMap<EResource, Double> startRate = new HashMap<>();
-    private final HashMap<EResource, Double> miningAmount = new HashMap<>();
-    private final HashMap<EResource, Double> buildingBoost = new HashMap<>();
-    private final HashMap<EResource, Double> techBoost = new HashMap<>();
+
+    /**
+     * Mining values
+     */
+    private final HashMap<EResource, Double> startRate = EResource.emptyContainer();
+    private final HashMap<EResource, Double> miningAmount = EResource.emptyContainer();
+    private final HashMap<EResource, Double> buildingBoost = EResource.emptyContainer();
+    private final HashMap<EResource, Double> techBoost = EResource.emptyContainer();
 
     // sustainability
     private HashMap<EResource, Double> efficiency = new HashMap<EResource, Double>();
@@ -41,24 +45,27 @@ public class MiningManager {
 
     private void init(){
 
-        resetStats();
+        resetBuildingStats();
+        resetTechStats();
     }
 
-    public void resetStats(){
+    public void resetBuildingStats(){
         for (EResource r : EResource.values()) {
-            miningRate.put(r, 0.0);
-
             startRate.put(r,0.1);
             miningAmount.put(r,0.0);
             buildingBoost.put(r,1.0);
-            techBoost.put(r,1.0);
 
             efficiency.put(r, 1.0);
         }
         computeMiningRate();
     }
 
-
+    public void resetTechStats(){
+        for (EResource r : EResource.values()) {
+            techBoost.put(r,1.0);
+        }
+        computeMiningRate();
+    }
 
     public void addMiningAmount(HashMap<EResource, Double> amount) {
         for (EResource r : EResource.values()) {
