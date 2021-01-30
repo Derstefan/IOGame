@@ -14,13 +14,32 @@ public class TechManager {
     private List<ETech> availableTechs = new ArrayList<>();
 
     private int researchPoints = 1;
-    private int lvl;
-    private long research = 0;
+
+    private double exp = 0;
+    private int lvl = 1;
+
 
     public TechManager() {
         updateAvailableTechs();
     }
 
+    public void addExp(double exp) {
+        this.exp += exp;
+
+        while (this.exp > researchLevels[lvl - 1]) {
+            lvlUp();
+        }
+
+    }
+
+    public void lvlUp() {
+        lvl++;
+        researchPoints++;
+    }
+
+    public void useResearchPoint() {
+        researchPoints--;
+    }
 
     private void updateAvailableTechs() {
         for (ETech tech : ETech.values()) {
