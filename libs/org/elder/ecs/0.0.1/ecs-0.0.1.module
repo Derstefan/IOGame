@@ -28,10 +28,10 @@
           "name": "ecs-0.0.1.jar",
           "url": "ecs-0.0.1.jar",
           "size": 27301,
-          "sha512": "3226e1eace65d29239750eea4d8c2bd7c68805aaa736cd7437343538d6789a827b451e8ea8abceb287ecadab299154df58ce1a3a2863cbcd4f5caa5274c71837",
-          "sha256": "0fb2d57d6f96ebc1bc54e2e562a8c24fd7dcfecb31ce1973062776e2a6051524",
-          "sha1": "6293e184081e602fd28f398d5f44e4ce1429de34",
-          "md5": "dce94065b6ab2733a1e528e0812879db"
+          "sha512": "1c43e84f7027a80631553c6471c02e45a3cbdb98f728fb03dec6e91cede110700a2481d0357c349a1007c1020efa2fd5486b79ba4b84ef3d74b0db7970fa9e2e",
+          "sha256": "47cda222e2441b0c6eab2ce8e9928ec011e172c3e2297dc0eea5479154004a37",
+          "sha1": "1fd5f02bb1fb9af95166d4e0e0617f0a427bc244",
+          "md5": "ac2d617c0fcca631dc08bcd28f5cb08a"
         }
       ]
     },
@@ -79,10 +79,10 @@
           "name": "ecs-0.0.1.jar",
           "url": "ecs-0.0.1.jar",
           "size": 27301,
-          "sha512": "3226e1eace65d29239750eea4d8c2bd7c68805aaa736cd7437343538d6789a827b451e8ea8abceb287ecadab299154df58ce1a3a2863cbcd4f5caa5274c71837",
-          "sha256": "0fb2d57d6f96ebc1bc54e2e562a8c24fd7dcfecb31ce1973062776e2a6051524",
-          "sha1": "6293e184081e602fd28f398d5f44e4ce1429de34",
-          "md5": "dce94065b6ab2733a1e528e0812879db"
+          "sha512": "1c43e84f7027a80631553c6471c02e45a3cbdb98f728fb03dec6e91cede110700a2481d0357c349a1007c1020efa2fd5486b79ba4b84ef3d74b0db7970fa9e2e",
+          "sha256": "47cda222e2441b0c6eab2ce8e9928ec011e172c3e2297dc0eea5479154004a37",
+          "sha1": "1fd5f02bb1fb9af95166d4e0e0617f0a427bc244",
+          "md5": "ac2d617c0fcca631dc08bcd28f5cb08a"
         }
       ]
     },
@@ -99,10 +99,30 @@
           "name": "ecs-0.0.1-all.jar",
           "url": "ecs-0.0.1-all.jar",
           "size": 12898440,
-          "sha512": "d96e43be460ab010f9810548ed52c5653a20b1d1fa897cd14ccec61abbca3ba599eb46c64628c87c8474de02d617410864e36710f98d11dfae15c654a86a5a99",
-          "sha256": "f89e05443890ee48777415da941df051ef62f270a5e355493ff3c45ffd1e3949",
-          "sha1": "48faedf92a0fddca23d669e6c6a89cd83a6bccf5",
-          "md5": "cf27662bfe8d8c070b28504d483e973d"
+          "sha512": "83a137d3834c9f86de90f622d1123f74bc777908aa46a6069f79e2cc2591c157303ac5032da4ea8ae815e736ed0d0cd553bae9b74cf8002ebe84f80c26b6bf34",
+          "sha256": "621be859fce0d13819c8622b4da24a0257203ba9b92f9384b20d03a1cf2fe799",
+          "sha1": "3f032bec0046dcde1ddebf7b604209619d504df5",
+          "md5": "113441c6808299a18ac3c54fadd7ae2c"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ecs-0.0.1-sources.jar",
+          "url": "ecs-0.0.1-sources.jar",
+          "size": 12239,
+          "sha512": "3952ff198166f5ca3102d7e392fa2f4f980011a8a468edbbafdda0c629e0a13d763628f8802b38e1bfc71b60859dcf6f144d9ed92afa99d725703e6bf7733f76",
+          "sha256": "abd3a4ed93da84a9526d5ea8295e8bcdd0262a0afbb26b9c2b8b449e28c66a5d",
+          "sha1": "a32ba815d592f535f6dcde29eaff9a73d101401f",
+          "md5": "59a2c53035b8546bc846aad551faf58b"
         }
       ]
     }
