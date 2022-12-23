@@ -1,7 +1,6 @@
 package org.iogame.controller;
 
 import org.iogame.JsonHelper;
-import org.iogame.core.BaseIdTest;
 import org.iogame.core.Id;
 import org.iogame.main.Game;
 import org.iogame.main.Server;
@@ -24,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class MapControllerTest extends BaseIdTest {
+class MapControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -36,10 +35,9 @@ class MapControllerTest extends BaseIdTest {
         gameId = Server.getInstance().createGame("test");
     }
 
-    @Override
     @AfterEach
     public void tearDown() {
-        super.tearDown();
+        Id.clear();
         Server.getInstance().clearGames();
     }
 

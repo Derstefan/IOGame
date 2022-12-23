@@ -4,6 +4,8 @@ import org.iogame.model.player.Player;
 import org.iogame.model.player.Team;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class GameObjectTest {
 
     @Test

@@ -50,7 +50,7 @@ public class Id {
     }
 
     @TestOnly
-    static void clear() {
+    public static void clear() {
         LONG_ID_POOL.clear();
     }
 }

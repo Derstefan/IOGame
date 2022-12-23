@@ -1,6 +1,6 @@
 package org.iogame.controller;
 
-import org.iogame.core.BaseIdTest;
+import org.iogame.core.Id;
 import org.iogame.main.Server;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -16,15 +16,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class ServerControllerTest extends BaseIdTest {
+class ServerControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
-    @Override
     @AfterEach
     public void tearDown() {
-        super.tearDown();
+        Id.clear();
         Server.getInstance().clearGames();
     }
 
