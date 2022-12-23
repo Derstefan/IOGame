@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+dependencies {
+    implementation project(':server')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    compileOnly 'org.jetbrains:annotations:20.1.0'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
