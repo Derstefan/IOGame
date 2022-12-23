@@ -1,0 +1,110 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.elder",
+    "module": "ecs",
+    "version": "0.0.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "ecs-0.0.1.jar",
+          "url": "ecs-0.0.1.jar",
+          "size": 27301,
+          "sha512": "3226e1eace65d29239750eea4d8c2bd7c68805aaa736cd7437343538d6789a827b451e8ea8abceb287ecadab299154df58ce1a3a2863cbcd4f5caa5274c71837",
+          "sha256": "0fb2d57d6f96ebc1bc54e2e562a8c24fd7dcfecb31ce1973062776e2a6051524",
+          "sha1": "6293e184081e602fd28f398d5f44e4ce1429de34",
+          "md5": "dce94065b6ab2733a1e528e0812879db"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.joml",
+          "module": "joml",
+          "version": {
+            "requires": "1.10.4"
+          }
+        },
+        {
+          "group": "org.eclipse.collections",
+          "module": "eclipse-collections-api",
+          "version": {
+            "requires": "11.0.0"
+          }
+        },
+        {
+          "group": "org.eclipse.collections",
+          "module": "eclipse-collections",
+          "version": {
+            "requires": "11.0.0"
+          }
+        },
+        {
+          "group": "org.reflections",
+          "module": "reflections",
+          "version": {
+            "requires": "0.10.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ecs-0.0.1.jar",
+          "url": "ecs-0.0.1.jar",
+          "size": 27301,
+          "sha512": "3226e1eace65d29239750eea4d8c2bd7c68805aaa736cd7437343538d6789a827b451e8ea8abceb287ecadab299154df58ce1a3a2863cbcd4f5caa5274c71837",
+          "sha256": "0fb2d57d6f96ebc1bc54e2e562a8c24fd7dcfecb31ce1973062776e2a6051524",
+          "sha1": "6293e184081e602fd28f398d5f44e4ce1429de34",
+          "md5": "dce94065b6ab2733a1e528e0812879db"
+        }
+      ]
+    },
+    {
+      "name": "shadowRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "shadowed",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ecs-0.0.1-all.jar",
+          "url": "ecs-0.0.1-all.jar",
+          "size": 12898440,
+          "sha512": "d96e43be460ab010f9810548ed52c5653a20b1d1fa897cd14ccec61abbca3ba599eb46c64628c87c8474de02d617410864e36710f98d11dfae15c654a86a5a99",
+          "sha256": "f89e05443890ee48777415da941df051ef62f270a5e355493ff3c45ffd1e3949",
+          "sha1": "48faedf92a0fddca23d669e6c6a89cd83a6bccf5",
+          "md5": "cf27662bfe8d8c070b28504d483e973d"
+        }
+      ]
+    }
+  ]
+}
