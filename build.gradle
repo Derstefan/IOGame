@@ -9,10 +9,14 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven  {
+        url 'libs'
+    }
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.elder:ecs:0.0.1'
 
     compileOnly 'org.jetbrains:annotations:20.1.0'
 
