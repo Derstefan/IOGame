@@ -1,36 +1,28 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.3.3.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'base'
 
-repositories {
-    mavenCentral()
-    maven  {
-        url 'libs'
-    }
-}
+    group = 'org.iogame'
+    version = '0.0.1'
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.elder:ecs:0.0.1'
-
-    compileOnly 'org.jetbrains:annotations:20.1.0'
-
-
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    repositories {
+        mavenCentral()
+        maven  {
+            url rootDir.path + '/libs'
+        }
     }
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+        testRuntimeOnly 'org.assertj:assertj-core:3.23.1'
+    }
 
-    testCompile("org.assertj:assertj-core:3.11.1")
-}
-
-test {
-    useJUnitPlatform()
+    test {
+        useJUnitPlatform()
+    }
 }
